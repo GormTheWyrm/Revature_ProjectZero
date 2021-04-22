@@ -1,0 +1,9 @@
+
+P
+java:S11444"3Remove this unused private "signUpCustomer" method.(úÙÃÅ8å‡Ë´/
+C	java:S131#""Add a default case to this switch.(Ù¿ë´şÿÿÿÿ8ë¢ª³/
+i	java:S1008"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶şºa8å‡Ë´/
+P
+java:S1144,"3Remove this unused private "signInCustomer" method.(éÈ«8ğùÍ³/
+U
+java:S11440"3Remove this unused private "signInEmployee" method.(¥Ì¹‹úÿÿÿÿ8Ö´Ñ³/
