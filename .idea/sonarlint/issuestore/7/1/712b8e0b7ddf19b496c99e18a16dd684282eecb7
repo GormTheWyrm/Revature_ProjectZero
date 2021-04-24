@@ -1,9 +1,22 @@
 
-P
-java:S11444"3Remove this unused private "signUpCustomer" method.(úÙÃÅ8å‡Ë´/
-C	java:S131#""Add a default case to this switch.(Ù¿ë´şÿÿÿÿ8ë¢ª³/
-i	java:S1008"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶şºa8å‡Ë´/
-P
-java:S1144,"3Remove this unused private "signInCustomer" method.(éÈ«8ğùÍ³/
-U
-java:S11440"3Remove this unused private "signInEmployee" method.(¥Ì¹‹úÿÿÿÿ8Ö´Ñ³/
+S
+java:S1144}"1Remove this unused private "employeeMenu" method.(ÍÜõîùÿÿÿÿ8Ûß–ı/
+O
+java:S1481K"-Remove this unused "customer" local variable.(ĞŞóŞûÿÿÿÿ8´«Äÿ/
+]	java:S125Z"<This block of commented-out lines of code should be removed.(±íèÌşÿÿÿÿ8Ûß–ı/
+H
+java:S1172a"+Remove this unused method parameter "scan".(¢æË¥8Ûß–ı/
+H
+java:S1172}"&Remove these unused method parameters.(ÍÜõîùÿÿÿÿ8Ûß–ı/
+S
+java:S1144p"1Remove this unused private "customerMenu" method.(é´±úÿÿÿÿ8Ûß–ı/
+H
+java:S1172f"+Remove this unused method parameter "scan".(¼‘‘ê8Ûß–ı/
+^	java:S125›"<This block of commented-out lines of code should be removed.(“¯¬°ıÿÿÿÿ8šË›ÿ/
+^
+java:S1854K"<Remove this useless assignment to local variable "customer".(ĞŞóŞûÿÿÿÿ8´«Äÿ/
+i	java:S100j"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶şºa8Ûß–ı/
+H
+java:S1172p"&Remove these unused method parameters.(é´±úÿÿÿÿ8Ûß–ı/
+K
+java:S1125>")Remove the literal "false" boolean value.(š“…ÿÿÿÿÿ8èÉı/

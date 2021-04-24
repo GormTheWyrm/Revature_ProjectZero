@@ -1,4 +1,4 @@
-package com.geordin;
+package com.geordin.model;
 
 public class BankAccount {
 

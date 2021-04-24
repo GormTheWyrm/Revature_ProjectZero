@@ -1,10 +1,20 @@
-com/geordin/Person.java
- com.geordin.Person
-com/geordin/BankAccount.java
- com.geordin.BankAccount
-com/geordin/Employee.java
- com.geordin.Employee
-com/geordin/Customer.java
- com.geordin.Customer
+com/geordin/bdutil/PostgresConnection.java
+ com.geordin.bdutil.PostgresConnection
+com/geordin/model/BankAccount.java
+ com.geordin.model.BankAccount
+com/geordin/DAO/CustomerDao.java
+ com.geordin.DAO.CustomerDao
+com/geordin/DAO/Imp/EmployeeImp.java
+ com.geordin.DAO.Imp.EmployeeImp
+com/geordin/model/User.java
+ com.geordin.model.User
+com/geordin/model/Customer.java
+ com.geordin.model.Customer
+com/geordin/model/Employee.java
+ com.geordin.model.Employee
+com/geordin/DAO/Imp/CustomerImp.java
+ com.geordin.DAO.Imp.CustomerImp
+com/geordin/DAO/EmployeeDao.java
+ com.geordin.DAO.EmployeeDao
 com/geordin/BankApp.java
  com.geordin.BankApp
