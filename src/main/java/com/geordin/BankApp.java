@@ -1,9 +1,8 @@
 package com.geordin;
 //currently, logger is breaking project
 
-import com.geordin.DAO.Imp.CustomerImp;
+import com.geordin.DAO.Imp.GormBankImp;
 import com.geordin.model.Customer;
-import com.geordin.model.Employee;
 import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
@@ -14,12 +13,9 @@ public class BankApp {
     private static Logger log=Logger.getLogger(BankApp.class);
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        //log hello message
-        log.info("Loading...");
-        //call menu
+        log.info("Loading gormbank user interface...");
         BankApp app = new BankApp();
-        app.mainMenu(sc);
-
+        app.mainMenu(sc); //main logic, front end
         sc.close(); //close scanner
     }
 
@@ -44,7 +40,9 @@ public class BankApp {
                     break;
                 case 2: this.signUpNewCustomer(scan);   //create new customer and add to database
                     break;
-                case 3: this.signInEmployee(scan);
+                case 3:
+                    this.employeeMenu(scan);
+//                    this.signInEmployee(scan); //hardcoded employee for now
                     break;
                 case 4: this.QuitApp(scan);
                     break;
@@ -53,13 +51,15 @@ public class BankApp {
         } while (menuState != 4);
 
     }
-    private void signInCustomer(Scanner scan) { //return customer
+    private void signInCustomer(Scanner scan) {
         // this should check sql for a user with the correct pw and username
-        //not validating password right now - do after MVP
         boolean isSignedIn = false;
         String pw = null;
         String user = null;
         while (isSignedIn == false) {
+//            CustomerImp customerDAO = new CustomerImp();    //different from sample code...
+            GormBankImp bankDao = new GormBankImp();
+            Customer customer = new Customer();
             log.info("\n\n\n\n\nWelcome returning customer. Please enter your username");
             log.info("Or type EXIT to return to the main menu");
             user = scan.nextLine();
@@ -68,37 +68,28 @@ public class BankApp {
                 log.info("Returning to main Menu");
                 break;
             } else {
+
                 log.info("\nThank You, ." + user + ". now please enter your password");
                 pw = scan.nextLine();
-                // need to create new customer, from DB data, and send that to the customer menu
+
                 try{
-                    Customer customer = CustomerImp.createCustomer(user,pw);
+                    // need to send username and pw to DB and get a Customer object back
+                    // then send that Customer object to the customer menu
+//                    customer = customerDAO.findCustomer(user,pw);//should return correct customer
+                    customer = bankDao.findCustomerByLogin(user, pw);   //need to figure out casting...
                 }
                 catch(BusinessException | SQLException e){//sql exception
-
+                log.info(e.getMessage());
+                //need to figure out which exceptions refer to what so I can give user more info
                 }
-
 
                 log.trace("temporary response- attempting to sign in");
                 isSignedIn = true; //fix this area...
-                //I would send call to database to verify existence of this username and pw combo,
-                // and once verified, let user continue to user menu...
-                //select account from a list...
-                //we should end up with... creatign a customer, and sending that to the customer menu
-                //customer menu would verify accounts...
-
-                //customerMenu(customer myCustomer);
-
-//        return customer to customer menu
-
-            } //exits else statement, leaving signinCustomer
+                this.customerMenu(scan, customer);
+            }
         }
     }
-    private void signInEmployee(Scanner scan){  //return employee
-        //should immediately grant access... if connection is good
 
-//        return employee
-    }
     private void signUpNewCustomer(Scanner scan){  //return employee
             log.info("this will create a new customer, add it to the database");    //check if this should require approval
 //        return employee
@@ -112,9 +103,10 @@ public class BankApp {
     private void customerMenu(Scanner scan, Customer customer){    //need to pass in a customer object
         //this is where customer can interact with DB..
         //how to set up employees approving new accounts...
+        long currentAccount;
         //while loop...
         log.info("\n\n\n\n\nCustomer Menu. Please select an option");
-        log.info("#1. sign in as a customer\n#2. sign up as a customer\n#3. sign in as employee\n#4. Quit");
+        log.info("#1. Account Info \n2. Quit");
         //options; 1. check balance (also checks account status...) 2. deposit  3.
         //  1. list accounts - checks status and balance
         //  2. deposit  - requires input
@@ -122,11 +114,44 @@ public class BankApp {
         //do i need to select account first in a nested loop... or can I sql search via customer id and return the associated accounts...
             //that uses the employee that should be sent to this function via parameter...
     }
-    private void employeeMenu(Scanner scan, Employee employee){ //need to pass in an employee object
-        //employee functions here
-        log.info("\n\n\n\n\nEmployee Menu\nPlease select an option\n#1. sign in as a customer\n#2. sign up as a customer\n#3. sign in as employee\n#4. Quit");
-        //should accounts with zero money send a notice to employee?...hmm... later maybe
+    private void employeeMenu(Scanner scan){ //
+        int menuState = 0;
+        while (menuState != 4){
+        try{
+            log.info("\n\n\n\n\nEmployee Menu\nPlease select an option\n#1. See all applications\n#2. Search Accounts By Username\n#3. Approve Account By Account Number");
+            log.info("Deny Account by Account Number");
+            //should accounts with zero money send a notice to employee?...hmm... later maybe
+            int answer = Integer.parseInt(scan.nextLine());
+            //scan.nextInt(); //parse this with ingeter wrapper from nextline
+            //number format exception!
+            menuState = answer;
+
+        } catch (Exception e){ //need to do a bunch of different exceptions...
+            log.info("Invalid entry");
+            menuState = 0;
+            // needs to actually deal with the exception...
+        }
+
+            //viewAccountsByUsername - customerDao?
+            //viewLogByDate
+            //ViewLogByUser
+            //ViewLogByAccount
+            //ApproveAccountByAccount
+                switch (menuState){
+            case 0: log.info("please enter an integer between 1 and 4");
+                break;
+            case 1: //see applications
+                break;
+            case 2: //
+                break;
+            case 3: //
+                break;
+            case 4: log.info("Returning to Main Menu");
+                break;
+            default: log.info("Please enter an integer between 1 and 4");
+        }
     }
+    }//if need to implement multiple employees, will need to add employe object to the parameters of employeeMenu
 
 
 }
@@ -176,7 +201,7 @@ Menu calls employee signin or customer signin methods
 
 
 
-uses a scanner to determine if
+transaction has account, accounts have user
 
 
 friday, 46 min in, 2:30 video

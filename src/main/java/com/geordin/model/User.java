@@ -4,29 +4,21 @@ public class User {
     String username;
     String password;
 
-    protected String getPassword() {
-        return password;
+    public String getPassword() {
+        return this.password;
     }
-
-    protected String getUsername() {
-        return username;
+    public String getUsername() {
+        return this.username;
     }
-
-    protected void setPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
-
-    protected void setUsername(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
-    public boolean verifyUser(String user, String pw){  // using this instead of a login method because we are not enabling any sort of tracking method to ensure they remain logged in. Its just a loop.
+//    public boolean verifyUser(String user, String pw){  // using this instead of a login method because we are not enabling any sort of tracking method to ensure they remain logged in. Its just a loop.
+      //this should connect to xxx which connects to DB, and returns true if username and pw verified (logged in)
 
-
-        //this should connect to xxx which connects to DB, and returns true if username and pw verified (logged in)
-
-    return false;
-    //returns true if login is successful
-    }
 //CONSTRUCTOR
     public User(){
 

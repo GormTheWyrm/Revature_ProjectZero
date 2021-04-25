@@ -1,11 +1,83 @@
 package com.geordin.model;
 
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
+
+//toString method needs love
 public class Customer extends User{
     //inherits username and password
-    //should also have:
+    private Long id;
+    private String name;
+    Hashtable<Long, Account> accounts = new Hashtable<>();
 
+//getters, setters
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public Long getId(){ return this.id;}
+    public void setId(Long id) {this.id = id;}
+    public void addAccount(Long accountNumber, Account account){ //only adds to object, not DB
+        this.accounts.put(accountNumber, account);
+    }
+    public void removeAccount(Long accountNumber){ //only adds to object, not DB
+        this.accounts.remove(accountNumber);
+    }
+
+    //need to add get account functions...no, thats a DAO thing!
+    //
     //constructors
-    //no arg constructor - not used
     public Customer(){};
-    //2 arg constructor, for
+    public Customer(Long id, String username, String password, String name, Hashtable<Long, Account> accounts){
+        setId(id);
+        setUsername(username);
+        setPassword(password);
+        setName(name);
+        //need to set accounts
+    }
+    public Customer(Long id, String username, String password, String name){ //no account collection
+        setId(id);
+        setUsername(username);
+        setPassword(password);
+        setName(name);
+        //naccount intentionally not set
+    }
+
+
+
+
+
+
+
+    // ~~~~~~~~~~~~~~~fixme!
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.username);
+    }
+    @Override
+    public String toString(){
+        Set<Long> keys = accounts.keySet();
+        Iterator<Long> itr = keys.iterator();
+        String myString = "Username: " + this.username; //should be a stringbuilder...
+        while(itr.hasNext()){
+            myString += "\n";
+            myString += itr.next();
+        }
+            return (myString);
+
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Customer)){ return false;}
+        Customer other = (Customer) o;
+        return this.username == other.username;
+        // probably need to take into account number of accounts...
+    }
+    //do I need to override accounts toString?
 }
+//https://docs.oracle.com/javase/8/docs/api/java/util/Hashtable.html
+// https://www.w3spoint.com/hashtable-in-java#:~:text=Hashtable%20in%20java%20example%20program%20code%20%3A%20Hashtable,in%20key-value%20pair.%20It%20not%20allowed%20duplicate%20key.
