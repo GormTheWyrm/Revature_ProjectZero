@@ -115,8 +115,10 @@ public class BankApp {
                     //need a username failure for when it is not unique...
                     //need to return id!
                     log.info("User created!");
+                    log.info("Redirecting to Customer Menu. New Customers Must Still Apply For A New Account");
                     Customer customer = new Customer(34L, user, pw, name); //id is temporary... may remove all ids from customers...
                     //send to user login!
+                    this.customerMenu(scan, customer);//sends user to the customer menu so they can apply for a new account
                 }
             }
         }
@@ -152,18 +154,7 @@ public class BankApp {
                     break;
                 default: log.info("Please enter an integer between 1 and 4");
             }
-
-
-        //options; 1. check balance (also checks account status...) 2. deposit  3.
-        //  1. list accounts - checks status and balance
-        //  2. deposit  - requires input
-        //  2. withdrawal - must be less than amount in account
-        //do i need to select account first in a nested loop... or can I sql search via customer id and return the associated accounts...
-            //that uses the employee that should be sent to this function via parameter...
-
-        //send to an accountmenu!
-//
-    }
+        }
     }
 
     private void customerAccountMenu(Scanner scan, Customer customer) {
@@ -177,7 +168,7 @@ public class BankApp {
             //scan.nextInt(); //parse this with ingeter wrapper from nextline
             //number format exception!
             //try here
-            //could actually just call accoutns here... no, user might have 100 accoutns and that would be awkward. let them do it manually
+            //could actually just call accounts here... no, user might have 100 accounts and that would be awkward. let them do it manually
             switch (menuState) {
                 case 0:
                     log.info("please enter an integer between 1 and 4");
@@ -226,12 +217,14 @@ public class BankApp {
         }
     }
 
-    private void employeeMenu(Scanner scan){ //
+    private void employeeMenu(Scanner scan){ //fixme
         int menuState = 0;
-        while (menuState != 4){
+        while (menuState != 9){
+            String username;
+            Long accountNumber;
         try{
-            log.info("\n\n\n\n\nEmployee Menu\nPlease select an option\n#1. See all applications\n#2. Search Accounts By Username\n#3. Approve Account By Account Number");
-            log.info("Deny Account by Account Number");
+            log.info("\n\n\n\n\nEmployee Menu\nPlease select an option\n1. See all applications\n2. Search Accounts By Username\n3. Approve Account By Account Number");
+            log.info("4. Deny Account by Account Number\n5. View Logs by Account\n6. View Logs By User\n7. View Logs by Date\n8. Return to Main Menu\n9. View All Logs");
             //should accounts with zero money send a notice to employee?...hmm... later maybe
             menuState = Integer.parseInt(scan.nextLine());
             //scan.nextInt(); //parse this with ingeter wrapper from nextline
@@ -243,78 +236,55 @@ public class BankApp {
             menuState = 0;
             // needs to actually deal with the exception...
         }
-
-            //viewAccountsByUsername - customerDao?
-            //viewLogByDate
-            //ViewLogByUser
-            //ViewLogByAccount
-            //ApproveAccountByAccount
                 switch (menuState){
-            case 0: log.info("please enter an integer between 1 and 4");
+            case 0: log.info("please enter an integer between 1 and 9");
                 break;
-            case 1: //see applications
+            case 1: //see all applications
                 break;
-            case 2: //
+            case 2:
+                log.info("Search By Username; Please enter Username.");
+                username = scan.nextLine();
+                //searchAccountsByUsername()
                 break;
-            case 3: //
+            case 3:
+                log.info("Please Enter Account To Approve.");
+                accountNumber = Long.parseLong(scan.nextLine());
+                //must catch arithmetic exception
+                //approveAccountByAccountNumber
                 break;
-            case 4: log.info("Returning to Main Menu");
+            case 4:
+                log.info("Please Enter Account To Deny.");
+                accountNumber = Long.parseLong(scan.nextLine());
+                //must catch arithmetic exception
+                // denyAccountByAccountNumber
                 break;
-            default: log.info("Please enter an integer between 1 and 4");
+            case 5:
+                log.info("Please Enter Account To View Logs.");
+                accountNumber = Long.parseLong(scan.nextLine());
+                //must catch arithmetic exception
+                //viewLogsByAccountNumber
+                break;
+            case 6:
+                log.info("Please Enter User To View Logs.");
+                username = scan.nextLine();
+                //viewLogsByUser
+                break;
+            case 7:
+                log.warn("View By Date Not Implemented");
+                //viewLogsByDate
+//                String date = Long.parseLong(scan.nextLine()); //what type to use for date?String?
+                break;
+            case 8: //viewAllLogs
+                log.warn("view all longs not yet implemented");
+                break;
+            case 9: log.info("Returning to Main Menu");
+                break;
+
+            default: log.info("Please enter an integer between 1 and 9");
         }
     }
     }//if need to implement multiple employees, will need to add employe object to the parameters of employeeMenu
+    //fixme
 
 
 }
-
-/*
-Bank App
-customer can
-    apply for an account
-    view balance
-    make withdrawals and deposits
-EMPloyee can
-    approve or deny accounts
-    view balances...
-        - sort/filter by
-            + customer
-            + account
-            + day (stretch goal)
-~~~~~
-MAIN
-    menu
-        - sign in as employee
-        - sign is as customer
-        - sign up as customer
-        - exit application
-        subMenu
-            + sign in as employee   {
-                - see open applications
-                - view customer (activity/balance plus applications)
-                    -activity
-                    -balance
-                - view account (activity plus balance
-                    -activity
-                    -balance
-            +sign in as customer
-                - select account belonging to that customer
-                - apply for new account
-            + logout to main menu
-
-    ~~~
-Main calls menu, which can be a method in main or a separate class... probably doesnt need to be a separate class...
-Menu handles most logic, keep it in main
-Menu calls employee signin or customer signin methods
-    these methods take in a person object?
-...
-//need to figure out logging first
-// then write a basic menu...
-
-
-
-transaction has account, accounts have user
-
-
-friday, 46 min in, 2:30 video
- */

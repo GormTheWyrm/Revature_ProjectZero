@@ -8,7 +8,7 @@ import java.util.Set;
 //toString method needs love
 public class Customer extends User{
     //inherits username and password
-    private Long id;
+    private Long id;    //may remove this... depends on DAO and sql
     private String name;
     Hashtable<Long, Account> accounts = new Hashtable<>();
 
