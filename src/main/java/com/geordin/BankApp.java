@@ -90,9 +90,36 @@ public class BankApp {
         }
     }
 
-    private void signUpNewCustomer(Scanner scan){  //return employee
-            log.info("this will create a new customer, add it to the database");    //check if this should require approval
-//        return employee
+    private void signUpNewCustomer(Scanner scan) {  //return employee
+        int menuState = 0;
+        while (menuState != 4) {
+            log.info("\n\n\n\n\nNew Customer Sign up. Please Create a Unique Username.");
+            log.info("Or type EXIT to return to the main menu");
+            String user = scan.nextLine();
+            //need to catch exception?
+            if (user.equals("exit") || user.equals("EXIT") || user.equals("Exit")) {
+
+                log.info("Returning to main Menu");
+                break;
+            } else {
+                log.info("Create a Password.");
+                String pw = scan.nextLine();
+                //need to catch exception?
+                log.info("For Our Records, Please Enter Your Real Name");
+                String name = scan.nextLine();
+
+                log.info("Username: " + user + " Name: " + name + " Password: " + pw + ". Is this correct? Y/N");
+                String answer = scan.nextLine();
+                if (answer.equals("y") || answer.equals("Y") || answer.equals("YES") || answer.equals("Yes") || answer.equals("yes")) {
+                    //attempt to put info into database
+                    //need a username failure for when it is not unique...
+                    //need to return id!
+                    log.info("User created!");
+                    Customer customer = new Customer(34L, user, pw, name); //id is temporary... may remove all ids from customers...
+                    //send to user login!
+                }
+            }
+        }
     }
     private void QuitApp(Scanner scan){  //return employee
         //this should quit the app...
@@ -101,19 +128,104 @@ public class BankApp {
         scan.close();
     }
     private void customerMenu(Scanner scan, Customer customer){    //need to pass in a customer object
-        //this is where customer can interact with DB..
-        //how to set up employees approving new accounts...
-        long currentAccount;
-        //while loop...
+        int menuState = 0;
+        while (menuState != 4){
         log.info("\n\n\n\n\nCustomer Menu. Please select an option");
-        log.info("#1. Account Info \n2. Quit");
+        log.info("1. See Accounts \n2. Apply For New Account \n3. Select An Account \n4. Return to Main Menu");
+            menuState = Integer.parseInt(scan.nextLine());
+            //scan.nextInt(); //parse this with ingeter wrapper from nextline
+            //number format exception!
+
+            switch (menuState){
+                case 0: log.info("please enter an integer between 1 and 4");
+                    break;
+                case 1: //should display accounts   -including status   //
+                    log.warn("this should display all accounts for the user");
+                    break;
+                case 2: //creates a new account and says something about waiting up to 48 hours
+                    log.warn("this should create a new account with pending status");
+                    //it would be great if users could only have 1 pending accoutn at a time...
+                    break;
+                case 3: this.customerAccountMenu(scan, customer); //sends to a new menu
+                    break;
+                case 4: log.info("returning...");
+                    break;
+                default: log.info("Please enter an integer between 1 and 4");
+            }
+
+
         //options; 1. check balance (also checks account status...) 2. deposit  3.
         //  1. list accounts - checks status and balance
         //  2. deposit  - requires input
         //  2. withdrawal - must be less than amount in account
         //do i need to select account first in a nested loop... or can I sql search via customer id and return the associated accounts...
             //that uses the employee that should be sent to this function via parameter...
+
+        //send to an accountmenu!
+//
     }
+    }
+
+    private void customerAccountMenu(Scanner scan, Customer customer) {
+        int menuState = 0;
+        long accountNum;
+        Long amount;
+        while (menuState != 5) {
+            log.info("\n\n\n\n\nCustomer Account Menu. Please select an option");
+            log.info("1. See Accounts \n2. Withdrawal\n3. Deposit\n4. Transfer Money\n5. Return to Customer Menu");
+            menuState = Integer.parseInt(scan.nextLine());
+            //scan.nextInt(); //parse this with ingeter wrapper from nextline
+            //number format exception!
+            //try here
+            //could actually just call accoutns here... no, user might have 100 accoutns and that would be awkward. let them do it manually
+            switch (menuState) {
+                case 0:
+                    log.info("please enter an integer between 1 and 4");
+                    break;
+                case 1: //should display accounts   -including status   //
+                    log.warn("this should display all accounts for the user");
+                    //call function to display all accounts for that customer, customer as parameter
+                    break;
+                case 2:
+                    log.info("Enter Account Number to Withdraw From");
+                    accountNum = Long.parseLong(scan.nextLine());
+                    //deal with exception
+                    log.info("How much do you want to withdraw?");
+                    amount = Long.parseLong(scan.nextLine());
+                    //call function to withdraw
+                    log.info("Withdraw Successful");
+                    log.warn("not implemented yet!!");
+                    break;
+                case 3:
+                    log.info("Enter Account Number to Deposit into");
+                    accountNum = Long.parseLong(scan.nextLine());
+                    //deal with exception
+                    log.info("How much do you want to Deposit?");
+                    amount = Long.parseLong(scan.nextLine());
+                    //call function to deposit
+                    log.info("Deposit Successful");
+                    log.warn("not implemented yet!!");
+                    break;
+                case 4:
+                    log.info("Enter Account Number to Transfer From");
+                    accountNum = Long.parseLong(scan.nextLine());
+                    //deal with exception
+                    log.info("How much do you want to Transfer?");
+                    amount = Long.parseLong(scan.nextLine());
+                    log.info("Enter Account Number to Transfer Money Into");
+                    Long account2 = Long.parseLong(scan.nextLine());
+                    log.info("Transfered $"+amount + " from Account Number "+ accountNum +" to account number "+ account2);
+                    log.warn("not implemented yet!!");
+                    break;
+                case 5: log.info("returning...");
+                    break;
+                default:
+                    log.info("Please enter an integer between 1 and 4");
+            }
+            //can I catch here? add the numeric exception...
+        }
+    }
+
     private void employeeMenu(Scanner scan){ //
         int menuState = 0;
         while (menuState != 4){
@@ -121,10 +233,10 @@ public class BankApp {
             log.info("\n\n\n\n\nEmployee Menu\nPlease select an option\n#1. See all applications\n#2. Search Accounts By Username\n#3. Approve Account By Account Number");
             log.info("Deny Account by Account Number");
             //should accounts with zero money send a notice to employee?...hmm... later maybe
-            int answer = Integer.parseInt(scan.nextLine());
+            menuState = Integer.parseInt(scan.nextLine());
             //scan.nextInt(); //parse this with ingeter wrapper from nextline
             //number format exception!
-            menuState = answer;
+
 
         } catch (Exception e){ //need to do a bunch of different exceptions...
             log.info("Invalid entry");

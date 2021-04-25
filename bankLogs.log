@@ -339,3 +339,364 @@ Please select an option
 #2. sign up as a customer
 #3. sign in as employee
 #4. Quit
+Loading gormbank user interface...
+
+
+
+
+
+Main Menu
+Please select an option
+#1. sign in as a customer
+#2. sign up as a customer
+#3. sign in as employee
+#4. Quit
+
+
+
+
+
+Welcome returning customer. Please enter your username
+Or type EXIT to return to the main menu
+
+Thank You, .ded. now please enter your password
+temporary response- attempting to sign in
+
+
+
+
+
+Customer Menu. Please select an option
+#1. Account Info 
+2. Quit
+
+
+
+
+
+Main Menu
+Please select an option
+#1. sign in as a customer
+#2. sign up as a customer
+#3. sign in as employee
+#4. Quit
+Exiting Application
+Loading gormbank user interface...
+
+
+
+
+
+Main Menu
+Please select an option
+#1. sign in as a customer
+#2. sign up as a customer
+#3. sign in as employee
+#4. Quit
+
+
+
+
+
+Welcome returning customer. Please enter your username
+Or type EXIT to return to the main menu
+
+Thank You, .Man. now please enter your password
+temporary response- attempting to sign in
+
+
+
+
+
+Customer Menu. Please select an option
+#1. See Accounts 
+ 2. Apply For New Account 
+3. Select An Account 
+.4 Quit
+this should display all accounts for the user
+
+
+
+
+
+Customer Menu. Please select an option
+#1. See Accounts 
+ 2. Apply For New Account 
+3. Select An Account 
+.4 Quit
+this should create a new account with pending status
+
+
+
+
+
+Customer Menu. Please select an option
+#1. See Accounts 
+ 2. Apply For New Account 
+3. Select An Account 
+.4 Quit
+
+
+
+
+
+Customer Menu. Please select an option
+#1. See Accounts 
+ 2. Withdrawal
+3. Deposit
+4. Transfer Money
+5. Quit
+this should display all accounts for the user
+
+
+
+
+
+Customer Menu. Please select an option
+#1. See Accounts 
+ 2. Withdrawal
+3. Deposit
+4. Transfer Money
+5. Quit
+this should display all accounts for the user
+
+
+
+
+
+Customer Menu. Please select an option
+#1. See Accounts 
+ 2. Withdrawal
+3. Deposit
+4. Transfer Money
+5. Quit
+Enter Account Number to Withdraw From
+How much do you want to withdraw?
+Withdraw Successful
+not implemented yet!!
+
+
+
+
+
+Customer Menu. Please select an option
+#1. See Accounts 
+ 2. Withdrawal
+3. Deposit
+4. Transfer Money
+5. Quit
+Enter Account Number to Deposit into
+How much do you want to Deposit?
+Deposit Successful
+not implemented yet!!
+
+
+
+
+
+Customer Menu. Please select an option
+#1. See Accounts 
+ 2. Withdrawal
+3. Deposit
+4. Transfer Money
+5. Quit
+Enter Account Number to Transfer From
+How much do you want to Transfer?
+Enter Account Number to Transfer Money Into
+Transfered $12 from Account Number 123 to account number 122
+not implemented yet!!
+
+
+
+
+
+Customer Menu. Please select an option
+#1. See Accounts 
+ 2. Withdrawal
+3. Deposit
+4. Transfer Money
+5. Quit
+returning...
+
+
+
+
+
+Customer Menu. Please select an option
+#1. See Accounts 
+ 2. Apply For New Account 
+3. Select An Account 
+.4 Quit
+returning...
+
+
+
+
+
+Main Menu
+Please select an option
+#1. sign in as a customer
+#2. sign up as a customer
+#3. sign in as employee
+#4. Quit
+this will create a new customer, add it to the database
+
+
+
+
+
+Main Menu
+Please select an option
+#1. sign in as a customer
+#2. sign up as a customer
+#3. sign in as employee
+#4. Quit
+Invalid entry
+please enter an integer between 1 and 4
+
+
+
+
+
+Main Menu
+Please select an option
+#1. sign in as a customer
+#2. sign up as a customer
+#3. sign in as employee
+#4. Quit
+Exiting Application
+Loading gormbank user interface...
+
+
+
+
+
+Main Menu
+Please select an option
+#1. sign in as a customer
+#2. sign up as a customer
+#3. sign in as employee
+#4. Quit
+
+
+
+
+
+New Customer Sign up. Please Create a Unique Username.
+Or type EXIT to return to the main menu
+Create a Password.
+For Our Records, Please Enter Your Real Name
+Username: red Name: Sam Password: 1234. Is this correct? Y/N
+User created!
+
+
+
+
+
+New Customer Sign up. Please Create a Unique Username.
+Or type EXIT to return to the main menu
+Returning to main Menu
+
+
+
+
+
+Main Menu
+Please select an option
+#1. sign in as a customer
+#2. sign up as a customer
+#3. sign in as employee
+#4. Quit
+
+
+
+
+
+Welcome returning customer. Please enter your username
+Or type EXIT to return to the main menu
+
+Thank You, .1. now please enter your password
+temporary response- attempting to sign in
+
+
+
+
+
+Customer Menu. Please select an option
+1. See Accounts 
+2. Apply For New Account 
+3. Select An Account 
+4. Return to Main Menu
+this should display all accounts for the user
+
+
+
+
+
+Customer Menu. Please select an option
+1. See Accounts 
+2. Apply For New Account 
+3. Select An Account 
+4. Return to Main Menu
+this should create a new account with pending status
+
+
+
+
+
+Customer Menu. Please select an option
+1. See Accounts 
+2. Apply For New Account 
+3. Select An Account 
+4. Return to Main Menu
+
+
+
+
+
+Customer Account Menu. Please select an option
+1. See Accounts 
+ 2. Withdrawal
+3. Deposit
+4. Transfer Money
+5. Return to Customer Menu
+Enter Account Number to Transfer From
+How much do you want to Transfer?
+Enter Account Number to Transfer Money Into
+Transfered $3 from Account Number 1233 to account number 123
+not implemented yet!!
+
+
+
+
+
+Customer Account Menu. Please select an option
+1. See Accounts 
+ 2. Withdrawal
+3. Deposit
+4. Transfer Money
+5. Return to Customer Menu
+returning...
+
+
+
+
+
+Customer Menu. Please select an option
+1. See Accounts 
+2. Apply For New Account 
+3. Select An Account 
+4. Return to Main Menu
+returning...
+
+
+
+
+
+Main Menu
+Please select an option
+#1. sign in as a customer
+#2. sign up as a customer
+#3. sign in as employee
+#4. Quit
+Exiting Application
