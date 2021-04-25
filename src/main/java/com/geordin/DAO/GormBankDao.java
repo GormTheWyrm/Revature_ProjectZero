@@ -9,10 +9,16 @@ public interface GormBankDao {
     //this will declare all of the methods that need to access the database!
 
 
-//    public Customer createNewCustomer(Long id, String username, String name, String password) throws SQLException, BusinessException;
-//    public void applyForAccount(Customer customer) throws SQLException, BusinessException; //create account,set status to pending
-        //should use customer object to validate signin... no, creates a new account with status pending under
+    public Customer createNewCustomer(String username, String name, String password) throws SQLException, BusinessException;
 
+//currently working
+    public void applyForAccount(Customer customer) throws SQLException, BusinessException; //create account,set status to pending
+        //should use customer object to validate signin... no, creates a new account with status pending under
+//currently testing
+    public Customer findCustomerByLogin(String username, String pw) throws SQLException, BusinessException;
+        //result was returned where none was requested
+
+    //need work
     //ApproveAccount()  //
     //viewAccountsByUsername
     //viewAllPendingApplications
@@ -25,8 +31,7 @@ public interface GormBankDao {
     //ViewLogByAccount
     //rejectApplication -delete
     //transferFunds
-    //viewAllLogs()
-    public Customer findCustomerByLogin(String username, String pw) throws SQLException, BusinessException;
+//    public void viewAllLogs() throws SQLException, BusinessException;
 
 
     //NOTES

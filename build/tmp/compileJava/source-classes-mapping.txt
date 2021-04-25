@@ -14,9 +14,9 @@ com/geordin/model/Employee.java
  com.geordin.model.Employee
 com/geordin/model/Customer.java
  com.geordin.model.Customer
-com/geordin/DAO/Imp/GormBankImp.java
- com.geordin.DAO.Imp.GormBankImp
 com/geordin/DAO/GormBankDao.java
  com.geordin.DAO.GormBankDao
+com/geordin/DAO/Imp/GormBankImp.java
+ com.geordin.DAO.Imp.GormBankImp
 com/geordin/BankApp.java
  com.geordin.BankApp

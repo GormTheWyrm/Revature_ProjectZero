@@ -24,10 +24,10 @@ public class BankApp {
         do{
             try{
                 log.info("\n\n\n\n\nMain Menu\nPlease select an option\n#1. sign in as a customer\n#2. sign up as a customer\n#3. sign in as employee\n#4. Quit");
-                int answer = Integer.parseInt(scan.nextLine());
+                menuState  = Integer.parseInt(scan.nextLine());
                         //scan.nextInt(); //parse this with ingeter wrapper from nextline
                 //number format exception!
-                menuState = answer;
+
             } catch (Exception e){ //need to do a bunch of different exceptions...
                 log.info("Invalid entry");
                 menuState = 0;
@@ -44,7 +44,7 @@ public class BankApp {
                     this.employeeMenu(scan);
 //                    this.signInEmployee(scan); //hardcoded employee for now
                     break;
-                case 4: this.QuitApp(scan);
+                case 4: this.quitApp(scan);
                     break;
                 default: log.info("Please enter an integer between 1 and 4");
             }
@@ -73,17 +73,18 @@ public class BankApp {
                 pw = scan.nextLine();
 
                 try{
+                    log.trace("customer sign in try block");
                     // need to send username and pw to DB and get a Customer object back
                     // then send that Customer object to the customer menu
 //                    customer = customerDAO.findCustomer(user,pw);//should return correct customer
                     customer = bankDao.findCustomerByLogin(user, pw);   //need to figure out casting...
                 }
-                catch(BusinessException | SQLException e){//sql exception
+                catch(BusinessException | SQLException e){
                 log.info(e.getMessage());
                 //need to figure out which exceptions refer to what so I can give user more info
                 }
 
-                log.trace("temporary response- attempting to sign in");
+                log.info("Signed In, Ridirecting to Customer Menu");
                 isSignedIn = true; //fix this area...
                 this.customerMenu(scan, customer);
             }
@@ -92,6 +93,7 @@ public class BankApp {
 
     private void signUpNewCustomer(Scanner scan) {  //return employee
         int menuState = 0;
+        GormBankImp bankImp = new GormBankImp();
         while (menuState != 4) {
             log.info("\n\n\n\n\nNew Customer Sign up. Please Create a Unique Username.");
             log.info("Or type EXIT to return to the main menu");
@@ -112,48 +114,64 @@ public class BankApp {
                 String answer = scan.nextLine();
                 if (answer.equals("y") || answer.equals("Y") || answer.equals("YES") || answer.equals("Yes") || answer.equals("yes")) {
                     //attempt to put info into database
-                    //need a username failure for when it is not unique...
-                    //need to return id!
-                    log.info("User created!");
-                    log.info("Redirecting to Customer Menu. New Customers Must Still Apply For A New Account");
-                    Customer customer = new Customer(34L, user, pw, name); //id is temporary... may remove all ids from customers...
-                    //send to user login!
-                    this.customerMenu(scan, customer);//sends user to the customer menu so they can apply for a new account
+                    try {
+                        bankImp.createNewCustomer(user, name, pw);
+                        //need a username failure for when it is not unique...
+                        //need to return id!
+                        log.info("User created!");
+                        log.info("Redirecting to Customer Menu. New Customers Must Still Apply For A New Account");
+                        Customer customer = new Customer(user, pw, name); //id is temporary... may remove all ids from customers...
+                        //send to user login!
+                        this.customerMenu(scan, customer);//sends user to the customer menu so they can apply for a new account
+                    }
+                    catch(SQLException | BusinessException e){
+                        menuState = 0;
+                        log.trace(e);
+                        log.info("An Error Occurred. Username might be taken, please try again");
+                    }
                 }
             }
         }
     }
-    private void QuitApp(Scanner scan){  //return employee
+    private void quitApp(Scanner scan){  //return employee
         //this should quit the app...
 //        return employee
         log.info("Exiting Application");
         scan.close();
+        //close database? I think java handles that automatically, and forcing it closed can be problematic
     }
     private void customerMenu(Scanner scan, Customer customer){    //need to pass in a customer object
         int menuState = 0;
         while (menuState != 4){
-        log.info("\n\n\n\n\nCustomer Menu. Please select an option");
-        log.info("1. See Accounts \n2. Apply For New Account \n3. Select An Account \n4. Return to Main Menu");
-            menuState = Integer.parseInt(scan.nextLine());
-            //scan.nextInt(); //parse this with ingeter wrapper from nextline
-            //number format exception!
+//            try {
+                log.info("\n\n\n\n\nCustomer Menu. Please select an option");
+                log.info("1. See Accounts \n2. Apply For New Account \n3. Select An Account \n4. Return to Main Menu");
+                    menuState = Integer.parseInt(scan.nextLine());
+                    //scan.nextInt(); //parse this with ingeter wrapper from nextline
+                    //number format exception!
 
-            switch (menuState){
-                case 0: log.info("please enter an integer between 1 and 4");
-                    break;
-                case 1: //should display accounts   -including status   //
-                    log.warn("this should display all accounts for the user");
-                    break;
-                case 2: //creates a new account and says something about waiting up to 48 hours
-                    log.warn("this should create a new account with pending status");
-                    //it would be great if users could only have 1 pending accoutn at a time...
-                    break;
-                case 3: this.customerAccountMenu(scan, customer); //sends to a new menu
-                    break;
-                case 4: log.info("returning...");
-                    break;
-                default: log.info("Please enter an integer between 1 and 4");
-            }
+                switch (menuState) {
+                    case 0:
+                        log.info("please enter an integer between 1 and 4");
+                        break;
+                    case 1: //should display accounts   -including status   //
+                        log.warn("this should display all accounts for the user");
+                        break;
+                    case 2:
+                        //creates a new account and says something about waiting up to 48 hours
+                        log.warn("this should create a new account with pending status");
+                        //it would be great if users could only have 1 pending accoutn at a time...
+                        break;
+                    case 3:
+                        this.customerAccountMenu(scan, customer); //sends to a new menu
+                        break;
+                    case 4:
+                        log.info("returning...");
+                        break;
+                    default:
+                        log.info("Please enter an integer between 1 and 4");
+                }
+//            } catch (SQLException | BusinessException e){}
         }
     }
 
