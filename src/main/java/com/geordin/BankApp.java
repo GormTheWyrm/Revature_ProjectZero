@@ -71,22 +71,27 @@ public class BankApp {
 
                 log.info("\nThank You, ." + user + ". now please enter your password");
                 pw = scan.nextLine();
+                if (pw.equals("exit") || pw.equals("EXIT") || pw.equals("Exit")) {
 
-                try{
-                    log.trace("customer sign in try block");
-                    // need to send username and pw to DB and get a Customer object back
-                    // then send that Customer object to the customer menu
+                    log.info("Returning to main Menu");
+                    break;
+                } else {
+
+                    try {
+                        log.trace("customer sign in try block");
+                        // need to send username and pw to DB and get a Customer object back
+                        // then send that Customer object to the customer menu
 //                    customer = customerDAO.findCustomer(user,pw);//should return correct customer
-                    customer = bankDao.findCustomerByLogin(user, pw);   //need to figure out casting...
-                }
-                catch(BusinessException | SQLException e){
-                log.info(e.getMessage());
-                //need to figure out which exceptions refer to what so I can give user more info
-                }
+                        customer = bankDao.findCustomerByLogin(user, pw);   //need to figure out casting...
+                    } catch (BusinessException | SQLException e) {
+                        log.info(e.getMessage());
+                        //need to figure out which exceptions refer to what so I can give user more info
+                    }
 
-                log.info("Signed In, Ridirecting to Customer Menu");
-                isSignedIn = true; //fix this area...
-                this.customerMenu(scan, customer);
+                    log.info("Signed In, Ridirecting to Customer Menu");
+                    isSignedIn = true; //fix this area...
+                    this.customerMenu(scan, customer);
+                }
             }
         }
     }
@@ -95,6 +100,7 @@ public class BankApp {
         int menuState = 0;
         GormBankImp bankImp = new GormBankImp();
         while (menuState != 4) {
+            log.trace(menuState);
             log.info("\n\n\n\n\nNew Customer Sign up. Please Create a Unique Username.");
             log.info("Or type EXIT to return to the main menu");
             String user = scan.nextLine();
@@ -116,12 +122,12 @@ public class BankApp {
                     //attempt to put info into database
                     try {
                         bankImp.createNewCustomer(user, name, pw);
-                        //need a username failure for when it is not unique...
-                        //need to return id!
                         log.info("User created!");
                         log.info("Redirecting to Customer Menu. New Customers Must Still Apply For A New Account");
                         Customer customer = new Customer(user, pw, name); //id is temporary... may remove all ids from customers...
                         //send to user login!
+                        menuState = 0; //skips while loop when customer exits customerMenu -> goes back to main menu
+                        //didnt work...why?
                         this.customerMenu(scan, customer);//sends user to the customer menu so they can apply for a new account
                     }
                     catch(SQLException | BusinessException e){
@@ -129,6 +135,7 @@ public class BankApp {
                         log.trace(e);
                         log.info("An Error Occurred. Username might be taken, please try again");
                     }
+
                 }
             }
         }
@@ -138,13 +145,15 @@ public class BankApp {
 //        return employee
         log.info("Exiting Application");
         scan.close();
+        System.exit(0);
         //close database? I think java handles that automatically, and forcing it closed can be problematic
     }
     private void customerMenu(Scanner scan, Customer customer){    //need to pass in a customer object
         int menuState = 0;
         while (menuState != 4){
+            log.info("\n\n\nSigned in as "+customer.getUsername());
 //            try {
-                log.info("\n\n\n\n\nCustomer Menu. Please select an option");
+                log.info("Customer Menu. Please select an option");
                 log.info("1. See Accounts \n2. Apply For New Account \n3. Select An Account \n4. Return to Main Menu");
                     menuState = Integer.parseInt(scan.nextLine());
                     //scan.nextInt(); //parse this with ingeter wrapper from nextline
@@ -160,13 +169,14 @@ public class BankApp {
                     case 2:
                         //creates a new account and says something about waiting up to 48 hours
                         log.warn("this should create a new account with pending status");
-                        //it would be great if users could only have 1 pending accoutn at a time...
+                        //it would be great if users could only have 1 pending account at a time...
                         break;
                     case 3:
                         this.customerAccountMenu(scan, customer); //sends to a new menu
                         break;
                     case 4:
-                        log.info("returning...");
+                        log.info("returning to main menu...");
+                        this.mainMenu(scan);
                         break;
                     default:
                         log.info("Please enter an integer between 1 and 4");
@@ -306,3 +316,7 @@ public class BankApp {
 
 
 }
+
+
+//bigdecimal instead of long... longs are ints!...numeric
+//arraylist!?

@@ -11,16 +11,16 @@ public interface GormBankDao {
 
     public Customer createNewCustomer(String username, String name, String password) throws SQLException, BusinessException;
 
-//currently working
+//currently working - tentatively
     public void applyForAccount(Customer customer) throws SQLException, BusinessException; //create account,set status to pending
         //should use customer object to validate signin... no, creates a new account with status pending under
-//currently testing
     public Customer findCustomerByLogin(String username, String pw) throws SQLException, BusinessException;
         //result was returned where none was requested
-
+    
+//currently testing
     //need work
     //ApproveAccount()  //
-    //viewAccountsByUsername
+    //viewAccountsByUsername    //used by employee and cutomer to view employees...
     //viewAllPendingApplications
     //findCustomerByUsername()
     //findCustomerByAccountNumber
@@ -29,10 +29,11 @@ public interface GormBankDao {
     //viewLogByDate
     //ViewLogByUser
     //ViewLogByAccount
+//    public void viewAllLogs() throws SQLException, BusinessException;
     //rejectApplication -delete
     //transferFunds
 //    public void viewAllLogs() throws SQLException, BusinessException;
-
+    //createTransaction //used to create record of any activity...
 
     //NOTES
     //"as a user, I can login", does that mean employees must login too?
@@ -45,5 +46,13 @@ public interface GormBankDao {
     //viewAccountsByUsername - customerDao?
 
 
+    /*
+    currently:
+        users can sign up for an account
+        ...
+        Users can log in to an account
+        ...
+
+     */
 
 }

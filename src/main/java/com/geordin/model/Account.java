@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Account {
     long accountNumber;
-    long balance;
+    double balance;
     String userId;
     String status;
 
@@ -16,11 +16,11 @@ public class Account {
         this.accountNumber = accountNumber;
     }
 
-    public long getBalance() {
+    public double getBalance() {
         return this.balance;
     }
 
-    public void setBalance(long balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 

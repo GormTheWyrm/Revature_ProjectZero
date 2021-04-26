@@ -1,16 +1,14 @@
 package com.geordin.model;
 
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 //toString method needs love
 public class Customer extends User{
     //inherits username and password
 //    private Long id;    //may add id back in if I implement ability to change username... but should not be necessary
     private String name;
-    Hashtable<Long, Account> accounts = new Hashtable<>();
+//    Hashtable<Long, Account> accounts = new Hashtable<>();
+    ArrayList<Account> accounts = new ArrayList<>();
 
 //getters, setters
     public String getName() {
@@ -21,8 +19,12 @@ public class Customer extends User{
     }
 //    public Long getId(){ return this.id;}
 //    public void setId(Long id) {this.id = id;}
-    public void addAccount(Long accountNumber, Account account){ //only adds to object, not DB
-        this.accounts.put(accountNumber, account);
+//    public void addAccount(Long accountNumber, Account account){ //only adds to object, not DB
+//        this.accounts.put(accountNumber, account);
+//    }
+    public void addAccount(Account account){
+        this.accounts.add(account);
+//        return true; //may need to change to a bool... so she tells me if error
     }
     public void removeAccount(Long accountNumber){ //only adds to object, not DB
         this.accounts.remove(accountNumber);
@@ -55,26 +57,27 @@ public class Customer extends User{
 
 
     // ~~~~~~~~~~~~~~~fixme!
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.username);
-    }
-    @Override
-    public String toString(){
-        Set<Long> keys = accounts.keySet();
-        Iterator<Long> itr = keys.iterator();
-        String myString = "Username: " + this.username; //should be a stringbuilder...
-        while(itr.hasNext()){
-            myString += "\n";
-            myString += itr.next();
-        }
-            return (myString);
-
-    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(this.username);
+//    }
+//    @Override
+//    public String toString(){
+//        Set<Long> keys = accounts.keySet();
+//        Iterator<Long> itr = keys.iterator();
+//        String myString = "Username: " + this.username; //should be a stringbuilder...
+//        while(itr.hasNext()){
+//            myString += "\n";
+//            myString += itr.next();
+//        }
+//            return (myString);
+//
+//    }
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Customer)){ return false;}
         Customer other = (Customer) o;
+//        for() for each account in accounts, if different retun false...
         return this.username == other.username;
         // probably need to take into account number of accounts...
     }

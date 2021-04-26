@@ -1,11 +1,39 @@
 
-^	java:S125²"<This block of commented-out lines of code should be removed.(“¯¬°ıÿÿÿÿ8ƒ±ò/
-i	java:S100_"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶şºa8ƒ±ò/
-O
-java:S1481h"3Remove this unused "currentAccount" local variable.(ĞšÍw8ƒ±ò/
+]
+java:S1854Ë":Remove this useless assignment to local variable "amount".(ô¾¶úüÿÿÿÿ8•ÃÌ/
 K
 java:S1125;")Remove the literal "false" boolean value.(š“…ÿÿÿÿÿ8ƒ±ò/
-H
-java:S1172["+Remove this unused method parameter "scan".(¼‘‘ê8ƒ±ò/
-H
-java:S1172e"&Remove these unused method parameters.(é´±úÿÿÿÿ8ƒ±ò/
+]
+java:S1854Õ":Remove this useless assignment to local variable "amount".(ô¾¶úüÿÿÿÿ8•ÃÌ/
+^	java:S125’"<This block of commented-out lines of code should be removed.(ñ¥ùšøÿÿÿÿ8¦¸Ö/
+R
+java:S1172²"/Remove this unused method parameter "customer".(óÆÿæûÿÿÿÿ8•ÃÌ/
+Z
+java:S1854ˆ"<Remove this useless assignment to local variable "username".(ÄöŠî8•ÃÌ/
+a
+java:S1854È">Remove this useless assignment to local variable "accountNum".(³Ã»€ùÿÿÿÿ8•ÃÌ/
+a
+java:S1854Ò">Remove this useless assignment to local variable "accountNum".(³Ã»€ùÿÿÿÿ8•ÃÌ/
+d
+java:S1854"ARemove this useless assignment to local variable "accountNumber".(àğ…ˆøÿÿÿÿ8•ÃÌ/
+d
+java:S1854™"ARemove this useless assignment to local variable "accountNumber".(àğ…ˆøÿÿÿÿ8•ÃÌ/
+P
+java:S1481ò"2Remove this unused "accountNumber" local variable.(°‘åá8•ÃÌ/
+b
+java:S1134±"DTake the required action to fix the issue indicated by this comment.(İùÎô8•ÃÌ/
+b
+java:S1134î"DTake the required action to fix the issue indicated by this comment.(Ã»öµ8•ÃÌ/
+d
+java:S1854“"ARemove this useless assignment to local variable "accountNumber".(àğ…ˆøÿÿÿÿ8•ÃÌ/
+Z
+java:S1854Ÿ"<Remove this useless assignment to local variable "username".(ÄöŠî8•ÃÌ/
+…
+java:S1192%"hDefine a constant instead of duplicating this literal "please enter an integer between 1 and 4" 3 times.(÷¥‰Ê8•ÃÌ/
+y
+java:S1192Î"VDefine a constant instead of duplicating this literal "not implemented yet!!" 3 times.(ç¨´Éüÿÿÿÿ8•ÃÌ/
+Š
+java:S11921"hDefine a constant instead of duplicating this literal "Please enter an integer between 1 and 4" 3 times.(ûçÆúÿÿÿÿ8•ÃÌ/
+K
+java:S1481ñ"-Remove this unused "username" local variable.(™ä°­8•ÃÌ/
+Y	java:S125®"<This block of commented-out lines of code should be removed.(®ª¨8¦¸Ö/

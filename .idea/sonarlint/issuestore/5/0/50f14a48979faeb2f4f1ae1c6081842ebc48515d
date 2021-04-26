@@ -1,0 +1,30 @@
+
+q
+java:S2095B"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¼‹Ôşÿÿÿÿ8¶şÜå/
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ôº”
+a
+java:S1134"DTake the required action to fix the issue indicated by this comment.(Û·È–8İÄßä/
+Z	java:S106#"9Replace this use of System.out or System.err by a logger.(Ò«Ñ€ÿÿÿÿÿ8°À´Ö/
+Z	java:S106["9Replace this use of System.out or System.err by a logger.(£‡åÂüÿÿÿÿ8«Ê«å/
+a
+java:S1134œ"DTake the required action to fix the issue indicated by this comment.(ºã‰B8Ÿ»™å/
+T	java:S106T"9Replace this use of System.out or System.err by a logger.(û¸åd8«Ê«å/
+]	java:S125W"<This block of commented-out lines of code should be removed.(èáúùÿÿÿÿ8ğÉíå/
+l
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(­µøÚ8Ê…åÔ/
+U	java:S106%"9Replace this use of System.out or System.err by a logger.(Çê8°À´Ö/
+g
+java:S1134…"DTake the required action to fix the issue indicated by this comment.(Ş­Ë¾üÿÿÿÿ8ö×Ó×/
+U	java:S1061"9Replace this use of System.out or System.err by a logger.(Á§öš8•ºÔ/
+Z	java:S106Z"9Replace this use of System.out or System.err by a logger.(áÂœÛÿÿÿÿÿ8«Ê«å/
+f
+java:S1134&"DTake the required action to fix the issue indicated by this comment.(“Í¯èøÿÿÿÿ8ŠÕÔ×/
+N	java:S1068"9Replace this use of System.out or System.err by a logger.(Á§öš
+X	java:S125l"<This block of commented-out lines of code should be removed.(¦¿é8ûÖœå/
+Z	java:S106Y"9Replace this use of System.out or System.err by a logger.(İò¼ÿÿÿÿÿ8ç—–æ/
+X	java:S125Š"<This block of commented-out lines of code should be removed.(Õ€ô68¯Ãæ/
+Z	java:S106!"9Replace this use of System.out or System.err by a logger.(êĞ†Ëüÿÿÿÿ8°À´Ö/
+c
+java:S2095J"GUse try-with-resources or close this "Statement" in a "finally" clause.(‘òš8¬ªÌå/
+f
+java:S1134F"DTake the required action to fix the issue indicated by this comment.(ÂúñŸüÿÿÿÿ8÷Ô¡æ/
