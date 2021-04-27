@@ -16,6 +16,10 @@ com/geordin/DAO/EmployeeDao.java
  com.geordin.DAO.EmployeeDao
 com/geordin/DAO/GormBankDao.java
  com.geordin.DAO.GormBankDao
+com/geordin/frontend/Menu.java
+ com.geordin.frontend.Menu
+com/geordin/business/BusinessLayer.java
+ com.geordin.business.BusinessLayer
 com/geordin/DAO/Imp/GormBankImp.java
  com.geordin.DAO.Imp.GormBankImp
 com/geordin/BankApp.java

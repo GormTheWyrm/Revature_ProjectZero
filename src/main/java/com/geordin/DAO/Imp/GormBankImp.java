@@ -47,20 +47,16 @@ public class GormBankImp implements GormBankDao {
 
     public Customer findCustomerByLogin(String username, String pw) throws SQLException, BusinessException {
         Customer customer = new Customer();
-
         //step 2 connection
         Connection connection = PostgresConnection.getConnection();
         //Step 3- Create Statement
         String sql = "SELECT username, name, password from gormbank.customers WHERE username = ? AND password = ?;";
-
         PreparedStatement preparedStatement = connection.prepareStatement(sql); //2nd par makes keys returnable...
         preparedStatement.setString(1, username);    //variables sent into DB
         preparedStatement.setString(2, pw);
-
         //Step 4 - Execute Query
         ResultSet resultSet = preparedStatement.executeQuery();
         System.out.println("Query executed - replace with trace");
-
         //Step 5 - Process Results  THIS WILL BE IMPORTANT~
         //        while (resultSet.next()){
         if (resultSet.next()) {
@@ -73,7 +69,7 @@ public class GormBankImp implements GormBankDao {
             customer.setPassword(resultSet.getString("password"));
         } //needs testing
         else {
-            throw new BusinessException("No User Found, Please Check Your Username and Password");
+            throw new BusinessException("No User Found");
         } //if no results, throw exception
         return customer;
     }
