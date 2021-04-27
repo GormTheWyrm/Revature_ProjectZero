@@ -1,20 +1,22 @@
 
-]	java:S125+"<This block of commented-out lines of code should be removed.(Ô‘ùÿÿÿÿ8£÷ÙÎ/
-a
-java:S11349"DTake the required action to fix the issue indicated by this comment.(Şæ²˜8’•ÃÌ/
-s
-java:S1149#"VReplace the synchronized class "Hashtable" by an unsynchronized one such as "HashMap".(•Ûòş8’•ÃÌ/
-]	java:S125"<This block of commented-out lines of code should be removed.(±Ó…Ÿûÿÿÿÿ8å³ÙÎ/
-]	java:S125$"<This block of commented-out lines of code should be removed.(Ô‘ùÿÿÿÿ8­äÙÎ/
-
-java:S1319#"rThe type of the "accounts" object should be an interface such as "Map" rather than the implementation "Hashtable".(•Ûòş8’•ÃÌ/
-8
-java:S1116""Remove this empty statement.(ŞÑ¹"8’•ÃÌ/
-x
-java:S1149"VReplace the synchronized class "Hashtable" by an unsynchronized one such as "HashMap".(¾Ø€İøÿÿÿÿ8¤¿ö/
-9
-java:S1643D"Use a StringBuilder instead.(ªŸ˜‰8’•ÃÌ/
-9
-java:S1643E"Use a StringBuilder instead.(½¡ïË8’•ÃÌ/
+X	java:S125="<This block of commented-out lines of code should be removed.(İ ’ì8şö”ù/
+r
+java:S1206M"PThis class overrides "equals()" and should therefore also override "hashCode()".(İ¢êÍıÿÿÿÿ8şö”ù/
 L
-java:S1172#"/Remove this unused method parameter "accounts".(•Ûòş8ñ“ÛÎ/
+java:S2175"/A "ArrayList<Account>" cannot contain a "Long".(ÄÕ•8Û§’ù/
+8
+java:S1116$"Remove this empty statement.(ŞÑ¹"8’•ÃÌ/
+]	java:S125P"<This block of commented-out lines of code should be removed.( Ï§€üÿÿÿÿ8„Ãù/
+L
+java:S1172%"/Remove this unused method parameter "accounts".(•Ûòş8ñ“ÛÎ/
+s
+java:S1149%"VReplace the synchronized class "Hashtable" by an unsynchronized one such as "HashMap".(•Ûòş8’•ÃÌ/
+]	java:S125-"<This block of commented-out lines of code should be removed.(Ô‘ùÿÿÿÿ8£÷ÙÎ/
+]	java:S125"<This block of commented-out lines of code should be removed.(±Ó…Ÿûÿÿÿÿ8å³ÙÎ/
+]	java:S125&"<This block of commented-out lines of code should be removed.(Ô‘ùÿÿÿÿ8­äÙÎ/
+a
+java:S1134;"DTake the required action to fix the issue indicated by this comment.(Şæ²˜8’•ÃÌ/
+
+java:S1319%"rThe type of the "accounts" object should be an interface such as "Map" rather than the implementation "Hashtable".(•Ûòş8’•ÃÌ/
+X	java:S125
+"<This block of commented-out lines of code should be removed.(’©‡¼8À³ù/

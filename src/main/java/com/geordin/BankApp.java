@@ -41,8 +41,8 @@ public class BankApp {
                 case 2: this.signUpNewCustomer(scan);   //create new customer and add to database
                     break;
                 case 3:
-                    this.employeeMenu(scan);
-//                    this.signInEmployee(scan); //hardcoded employee for now
+//                    this.employeeMenu(scan);
+                    this.signInEmployee(scan); //hardcoded employee for now
                     break;
                 case 4: this.quitApp(scan);
                     break;
@@ -88,7 +88,7 @@ public class BankApp {
                         //need to figure out which exceptions refer to what so I can give user more info
                     }
 
-                    log.info("Signed In, Ridirecting to Customer Menu");
+                    log.info("\nSigned In, Redirecting to Customer Menu");  //may need to replace \n fixme
                     isSignedIn = true; //fix this area...
                     this.customerMenu(scan, customer);
                 }
@@ -130,7 +130,7 @@ public class BankApp {
                         //didnt work...why?
                         this.customerMenu(scan, customer);//sends user to the customer menu so they can apply for a new account
                     }
-                    catch(SQLException | BusinessException e){
+                    catch(NumberFormatException | SQLException | BusinessException e){
                         menuState = 0;
                         log.trace(e);
                         log.info("An Error Occurred. Username might be taken, please try again");
@@ -150,9 +150,10 @@ public class BankApp {
     }
     private void customerMenu(Scanner scan, Customer customer){    //need to pass in a customer object
         int menuState = 0;
+        GormBankImp bankImp = new GormBankImp();
         while (menuState != 4){
             log.info("\n\n\nSigned in as "+customer.getUsername());
-//            try {
+            try {
                 log.info("Customer Menu. Please select an option");
                 log.info("1. See Accounts \n2. Apply For New Account \n3. Select An Account \n4. Return to Main Menu");
                     menuState = Integer.parseInt(scan.nextLine());
@@ -161,13 +162,15 @@ public class BankApp {
 
                 switch (menuState) {
                     case 0:
-                        log.info("please enter an integer between 1 and 4");
+                        log.info("please enter an integer between 1 and 4"); //redirected by catch block
                         break;
                     case 1: //should display accounts   -including status   //
+                        bankImp.viewAccountsByUsername(customer);
                         log.warn("this should display all accounts for the user");
                         break;
                     case 2:
                         //creates a new account and says something about waiting up to 48 hours
+                        bankImp.applyForAccount(customer);
                         log.warn("this should create a new account with pending status");
                         //it would be great if users could only have 1 pending account at a time...
                         break;
@@ -181,93 +184,105 @@ public class BankApp {
                     default:
                         log.info("Please enter an integer between 1 and 4");
                 }
-//            } catch (SQLException | BusinessException e){}
+            } catch (NumberFormatException | SQLException | BusinessException e){
+                log.info("invalid response");
+                log.trace(e.getMessage());
+                menuState = 0;}
         }
     }
 
-    private void customerAccountMenu(Scanner scan, Customer customer) {
+    private void customerAccountMenu(Scanner scan, Customer customer) { //customer interacts with a specific account option...
         int menuState = 0;
         long accountNum;
-        Long amount;
-        while (menuState != 5) {
-            log.info("\n\n\n\n\nCustomer Account Menu. Please select an option");
-            log.info("1. See Accounts \n2. Withdrawal\n3. Deposit\n4. Transfer Money\n5. Return to Customer Menu");
-            menuState = Integer.parseInt(scan.nextLine());
-            //scan.nextInt(); //parse this with ingeter wrapper from nextline
-            //number format exception!
-            //try here
-            //could actually just call accounts here... no, user might have 100 accounts and that would be awkward. let them do it manually
-            switch (menuState) {
-                case 0:
-                    log.info("please enter an integer between 1 and 4");
-                    break;
-                case 1: //should display accounts   -including status   //
-                    log.warn("this should display all accounts for the user");
-                    //call function to display all accounts for that customer, customer as parameter
-                    break;
-                case 2:
-                    log.info("Enter Account Number to Withdraw From");
-                    accountNum = Long.parseLong(scan.nextLine());
-                    //deal with exception
-                    log.info("How much do you want to withdraw?");
-                    amount = Long.parseLong(scan.nextLine());
-                    //call function to withdraw
-                    log.info("Withdraw Successful");
-                    log.warn("not implemented yet!!");
-                    break;
-                case 3:
-                    log.info("Enter Account Number to Deposit into");
-                    accountNum = Long.parseLong(scan.nextLine());
-                    //deal with exception
-                    log.info("How much do you want to Deposit?");
-                    amount = Long.parseLong(scan.nextLine());
-                    //call function to deposit
-                    log.info("Deposit Successful");
-                    log.warn("not implemented yet!!");
-                    break;
-                case 4:
-                    log.info("Enter Account Number to Transfer From");
-                    accountNum = Long.parseLong(scan.nextLine());
-                    //deal with exception
-                    log.info("How much do you want to Transfer?");
-                    amount = Long.parseLong(scan.nextLine());
-                    log.info("Enter Account Number to Transfer Money Into");
-                    Long account2 = Long.parseLong(scan.nextLine());
-                    log.info("Transfered $"+amount + " from Account Number "+ accountNum +" to account number "+ account2);
-                    log.warn("not implemented yet!!");
-                    break;
-                case 5: log.info("returning...");
-                    break;
-                default:
-                    log.info("Please enter an integer between 1 and 4");
+        double amount;
+        GormBankImp bankImp = new GormBankImp();
+        while (menuState != 6) {
+            try {
+
+                log.info("\n\n\n\n\nCustomer Account Menu. Please select an option");
+                log.info("1. See Accounts \n2. Withdrawal\n3. Deposit\n4. Transfer Money\n5. Apply For New Application\n6. Return to Customer Menu");
+                menuState = Integer.parseInt(scan.nextLine());
+                switch (menuState) {
+                    case 0:
+                        log.info("please enter an integer between 1 and 4");//catch statement redirects here
+                        break;
+                    case 1: //should display accounts   -including status   //
+                        bankImp.viewAccountsByUsername(customer);
+                        log.warn("this should display all accounts for the user");
+                        //call function to display all accounts for that customer, customer as parameter
+                        break;
+                    case 2:
+                        log.info("Enter Account Number to Withdraw From");
+                        accountNum = Long.parseLong(scan.nextLine());
+                        //deal with exception
+                        log.info("How much do you want to withdraw?");
+                        amount = Double.parseDouble(scan.nextLine());
+                        //call function to withdraw
+                        log.info("Withdraw Successful");
+                        log.warn("not implemented yet!!");
+                        bankImp.withdrawFunds(customer, accountNum, amount);
+                        break;
+                    case 3:
+                        log.info("Enter Account Number to Deposit into");
+                        accountNum = Long.parseLong(scan.nextLine());
+                        //deal with exception
+                        log.info("How much do you want to Deposit?");
+                        amount = Long.parseLong(scan.nextLine());
+                        //call function to deposit
+                        log.info("Deposit Successful");
+                        log.warn("not implemented yet!!");
+                        bankImp.depositFunds(customer, accountNum, amount);
+                        break;
+                    case 4:
+                        log.info("Enter Account Number to Transfer From");
+                        accountNum = Long.parseLong(scan.nextLine());
+                        //deal with exception
+                        log.info("How much do you want to Transfer?");
+                        amount = Long.parseLong(scan.nextLine());
+                        log.info("Enter Account Number to Transfer Money Into");
+                        Long accountNum2 = Long.parseLong(scan.nextLine());
+                        log.info("Transfered $" + amount + " from Account Number " + accountNum + " to account number " + accountNum2);
+                        log.warn("not implemented yet!!");
+                        bankImp.transferFunds(customer, accountNum, accountNum2, amount);
+                        break;
+                    case 5: //apply for account
+                        bankImp.applyForAccount(customer);
+                        log.info("Applied for new account under user:" + customer.getUsername());
+                        break;
+                    case 6:
+                        log.info("returning...");
+                        break;
+                    default:
+                        log.info("Please enter an integer between 1 and 6");
+                }
+            }catch(NumberFormatException | SQLException | BusinessException e){
+                menuState = 0;
             }
-            //can I catch here? add the numeric exception...
         }
     }
 
     private void employeeMenu(Scanner scan){ //fixme
         int menuState = 0;
+        GormBankImp bankDao = new GormBankImp();
         while (menuState != 9){
             String username;
             Long accountNumber;
         try{
             log.info("\n\n\n\n\nEmployee Menu\nPlease select an option\n1. See all applications\n2. Search Accounts By Username\n3. Approve Account By Account Number");
-            log.info("4. Deny Account by Account Number\n5. View Logs by Account\n6. View Logs By User\n7. View Logs by Date\n8. Return to Main Menu\n9. View All Logs");
+            log.info("4. Deny Account by Account Number\n5. View Logs by Account\n6. View Logs By User\n7. View Logs by Date\n8. View All Logs\n9. Return to Main Menu");
             //should accounts with zero money send a notice to employee?...hmm... later maybe
             menuState = Integer.parseInt(scan.nextLine());
             //scan.nextInt(); //parse this with ingeter wrapper from nextline
             //number format exception!
 
-
-        } catch (Exception e){ //need to do a bunch of different exceptions...
-            log.info("Invalid entry");
-            menuState = 0;
-            // needs to actually deal with the exception...
-        }
                 switch (menuState){
             case 0: log.info("please enter an integer between 1 and 9");
                 break;
             case 1: //see all applications
+//                bankDao.viewAccountsById(accountNumber); //oops
+//                bankDao.viewAccountsByUsernameNoPW();
+                //viewaccount by customer!
+                bankDao.viewAllApplications();
                 break;
             case 2:
                 log.info("Search By Username; Please enter Username.");
@@ -310,10 +325,39 @@ public class BankApp {
 
             default: log.info("Please enter an integer between 1 and 9");
         }
+        } catch (NumberFormatException | SQLException | BusinessException e){ //need to do a bunch of different exceptions...
+            log.info("Invalid entry");
+            log.warn(e.getMessage());
+            menuState = 0;
+        }
     }
     }//if need to implement multiple employees, will need to add employe object to the parameters of employeeMenu
     //fixme
+    private void signInEmployee(Scanner scan){
+        // this should check sql for a user with the correct pw and username
+        boolean isSignedIn = false;
+        String pw = null;
 
+        while (isSignedIn == false) {
+//            GormBankImp bankDao = new GormBankImp(); //will need this if employee credentials in DB
+            //would create employe object here if needed to access DB
+            log.info("\n\n\nWelcome Employee. Please enter your Password");
+            log.info("Or type EXIT to return to the main menu");
+            pw = scan.nextLine();
+            if  (pw.equals("exit") || pw.equals("EXIT") || pw.equals("Exit")) {
+
+                    log.info("Returning to main Menu");
+                    break;
+            }
+            else if (pw.equals("password")) {
+                log.info("\nSigned In, Redirecting to Employee Menu");  //may need to replace \n fixme
+                isSignedIn = true; //fix this area...
+                this.employeeMenu(scan); //will want to pass an employee object into this when implementing credentials...
+            }
+            //else isSignedIn is still false and loops
+            }
+
+    }
 
 }
 

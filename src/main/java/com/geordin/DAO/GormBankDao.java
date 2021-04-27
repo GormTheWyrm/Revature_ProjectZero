@@ -16,16 +16,24 @@ public interface GormBankDao {
         //should use customer object to validate signin... no, creates a new account with status pending under
     public Customer findCustomerByLogin(String username, String pw) throws SQLException, BusinessException;
         //result was returned where none was requested
-    
+
 //currently testing
+
+    public void viewAllApplications() throws SQLException, BusinessException; //oops... i dont think I need this... also broken
+//public Customer findCustomerByLoginNoPW(String username, String pw) throws SQLException, BusinessException;
+    //should be find account by customer!
+    //not built
+//    public void viewAccountsById() //oops... did I need this?
     //need work
     //ApproveAccount()  //
-    //viewAccountsByUsername    //used by employee and cutomer to view employees...
+    public void viewAccountsByUsername(Customer customer) throws SQLException, BusinessException;   //used by ...
+    public void viewAccountsByUsername(String username) throws SQLException, BusinessException;   //used by employee to view customers... without getting pw
     //viewAllPendingApplications
     //findCustomerByUsername()
     //findCustomerByAccountNumber
-    //withdrawFunds
-    //depositFunds(
+    public void withdrawFunds(Customer customer, long accountNum, double amount) throws SQLException, BusinessException;
+    public void depositFunds(Customer customer, long accountNum, double amount) throws SQLException, BusinessException;
+    public void transferFunds(Customer customer, long accountNum, long accountNum2, double amount) throws SQLException, BusinessException;
     //viewLogByDate
     //ViewLogByUser
     //ViewLogByAccount

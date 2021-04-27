@@ -59,7 +59,7 @@ public class GormBankImp implements GormBankDao {
 
         //Step 4 - Execute Query
         ResultSet resultSet = preparedStatement.executeQuery();
-        System.out.println("Query executed");
+        System.out.println("Query executed - replace with trace");
 
         //Step 5 - Process Results  THIS WILL BE IMPORTANT~
         //        while (resultSet.next()){
@@ -79,11 +79,53 @@ public class GormBankImp implements GormBankDao {
         return customer;
     }
 
+
 //ACCOUNTS
+    public void viewAllApplications() throws SQLException, BusinessException{ //fixme wrong method, but useful for getMyAccounts and getaccbyuser...
+        Connection connection = PostgresConnection.getConnection();
+//        String sql = "SELECT * from gormbank.accounts;";
+        String sql = "select customers.userid, customers.username, customers.name, " +
+        "accounts.account_number, accounts.balance, accounts.status " +
+        "from gormbank.customers RIGHT join gormbank.accounts on accounts.userid = customers.userid " +
+         "WHERE status = 'pending';";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        System.out.println("Query executed - replace with trace");
+        System.out.println("RESULTS\n");
+            while (resultSet.next()) {
+                System.out.print(" Account: " + resultSet.getLong("account_number"));
+                System.out.print(" Balance : " + resultSet.getDouble("balance")); //wrong type, fixme
+                System.out.print(" User: " + resultSet.getString("username"));
+                System.out.print(" Name: " + resultSet.getString("name"));
+                System.out.print(" User: " + resultSet.getString("name"));
+                System.out.print(" Status: " + resultSet.getString("status"));
+                System.out.println("\n");
+
+            } //dont actually need the balance...
+
+    }
     public void applyForAccount (Customer customer) throws SQLException, BusinessException {
 
             System.out.println("temp function");
         }
+    public void viewAccountsByUsername(Customer customer) throws SQLException, BusinessException {   //used by employee and customer to view employees...
+
+        System.out.println("temp function");
+    }
+    public void viewAccountsByUsername(String username) throws SQLException, BusinessException {   //used by employee and customer to view employees...
+            //WORKING - use viewAllAccounts
+        System.out.println("temp function");
+    }
+
+    public void withdrawFunds(Customer customer, long accountNum, double amount) throws SQLException, BusinessException{
+        System.out.println("temp function");
+    }
+    public void depositFunds(Customer customer, long accountNum, double amount) throws SQLException, BusinessException{
+        System.out.println("temp function");
+    }
+    public void transferFunds(Customer customer, long accountNum, long accountNum2, double amount) throws SQLException, BusinessException{
+        System.out.println("temp function");
+    }
 
 //TRANSACTIONS
 
