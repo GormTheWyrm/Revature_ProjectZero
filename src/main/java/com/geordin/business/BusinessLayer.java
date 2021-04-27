@@ -15,7 +15,7 @@ public class BusinessLayer {
         //employeeSearch Service would be rough equivalent
         Customer customer = new Customer();
         GormBankImp bankImp = new GormBankImp();
-    public Customer signInOldCustomer(Scanner scan, String user, String pw) throws BusinessException {
+    public Customer signInOldCustomer(Scanner scan, String user, String pw) throws BusinessException { //seems to work!
         try{
             customer = bankImp.findCustomerByLogin(user, pw); //if DB has that user, create it
             log.trace("loginOldCustomer from "+ customer.getUsername()); //this is not null... error is not here?
@@ -44,14 +44,14 @@ public class BusinessLayer {
         }
         return customer; //should not return null customer... I hope
     }
-    public boolean signInEmployee(String pw){
+    public boolean signInEmployee(String pw){ //seems to work
         if (pw.equals("password")){
             return true;
         }
         else {return false;}
     } //will need to edit this if real login required...
 
-    public Vector<Account> findMyAccounts(Customer customer) throws BusinessException{
+    public Vector<Account> findMyAccounts(Customer customer) throws BusinessException{  //fixme testing here!
         //pass in customer, should return a collection of accounts...
         //set list to findAccountsByUsername(customer.getUsername()) throws business exception; fixme here
 //        public void viewAccountsByUsername(customer.getUsername(), customer.getPassword()); //not revalidating password... thats an issue
@@ -59,6 +59,7 @@ public class BusinessLayer {
         Vector<Account> accounts = new Vector<>();
         try{
         accounts = bankImp.findAccountsByUsername(customer.getUsername());
+        log.trace("Business Layer, findMyAccounts: " + accounts); //this is not for the user - displays but ugly
         return accounts;
         //needs testing fixme might need to be iterated...
         }

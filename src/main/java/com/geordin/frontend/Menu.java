@@ -57,9 +57,9 @@ public class Menu { //may change name to app...
                         }
                         else{
                             try{
-                                Customer customer = businessLayer.signInOldCustomer(scan, user, pw); //fixme - null here...
-                                log.info("Redirecting to Customer Menu: "+ customer.getUsername()); //fixme - returning null
-                                log.trace(businessLayer.signInOldCustomer(scan, user, pw));         //fixme -null
+                                Customer customer = businessLayer.signInOldCustomer(scan, user, pw);
+                                log.info("Redirecting to Customer Menu: "+ customer.getUsername());
+                                log.trace(businessLayer.signInOldCustomer(scan, user, pw));
                                 this.customerMenu(scan, customer);
 
                             }
@@ -118,10 +118,7 @@ public class Menu { //may change name to app...
             try {
                 log.info("Customer Menu. Please select an option");
                 log.info("1. See My Accounts \n2. Apply For New Account \n3. Make A Withdrawal\n4. Make A Deposit\n5. Transfer Money\n6. Return to Main Menu");
-
-
                 menuState = Integer.parseInt(scan.nextLine());
-
             } catch (NumberFormatException e){
                 log.info("Invalid entry");
                 menuState = 0;
@@ -132,9 +129,10 @@ public class Menu { //may change name to app...
                         log.info("please enter an integer between 1 and 6"); //redirected by catch block
                         break;
                     case 1: //should display customers own accounts   -including status   //
-                        try {//this needs to set accounts, but for nwo it can just display them
-                            Vector<Account> tempAccounts = new Vector<>();
-                            tempAccounts = businessLayer.findMyAccounts(customer); //fixme here
+                        try {//this needs to set accounts, but for nwo it can just display them fixme
+                            Vector<Account> accounts = new Vector<>();
+                            accounts = businessLayer.findMyAccounts(customer); //seems to work!
+                            accounts.forEach(acc -> log.info(acc.toString())); //SUCCESS!! displays each account
                         }
                         catch (BusinessException e) {
                             log.info(e.getMessage());
