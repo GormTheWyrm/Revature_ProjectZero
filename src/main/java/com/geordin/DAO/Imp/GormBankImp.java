@@ -64,9 +64,8 @@ public class GormBankImp implements GormBankDao {
         //Step 5 - Process Results  THIS WILL BE IMPORTANT~
         //        while (resultSet.next()){
         if (resultSet.next()) {
-            System.out.print(" Name : " + resultSet.getString("username"));
-            System.out.print(" Name : " + resultSet.getString("name"));
-            System.out.print(" City : " + resultSet.getString("password"));
+            System.out.println("Login Successful, welcome "+ resultSet.getString("username")); //just realized I dont need to display the records for this
+
             //put variables in customer and return it!
             //set name and password - but only if returned from DB
             customer.setUsername(resultSet.getString("username"));

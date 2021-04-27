@@ -13,8 +13,7 @@ public interface GormBankDao {
 
 //currently working - tentatively
     public void applyForAccount(Customer customer) throws SQLException, BusinessException; //create account,set status to pending
-        //should use customer object to validate signin... no, creates a new account with status pending under
-    public Customer findCustomerByLogin(String username, String pw) throws SQLException, BusinessException;
+    public Customer findCustomerByLogin(String username, String pw) throws SQLException, BusinessException; //returns customer object when logging in with user and pw
         //result was returned where none was requested
     public void viewAllApplications() throws SQLException, BusinessException; //views all accounts with "pending" status
                     //is basically viewAllPendingApplications...should I change name? no

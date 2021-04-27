@@ -59,7 +59,7 @@ public class BankApp {
         while (isSignedIn == false) {
 //            CustomerImp customerDAO = new CustomerImp();    //different from sample code...
             GormBankImp bankDao = new GormBankImp();
-            Customer customer = new Customer();
+            Customer customer = new Customer("exit", "exit", "exit");
             log.info("\n\n\n\n\nWelcome returning customer. Please enter your username");
             log.info("Or type EXIT to return to the main menu");
             user = scan.nextLine();
@@ -87,14 +87,21 @@ public class BankApp {
                         log.info(e.getMessage());
                         //need to figure out which exceptions refer to what so I can give user more info
                     }
+                    //check is customer.passord == password && user == custumer.user
 
+
+                if ((customer.getPassword().equals(pw)) && (customer.getUsername().equals(user))){  //fixme error null pointer exception
+                    //null caused issues so I put exit as pw and username and name... should not be able ot equal that- should break above
+                        isSignedIn = true;
                     log.info("\nSigned In, Redirecting to Customer Menu");  //may need to replace \n fixme
                     isSignedIn = true; //fix this area...
                     this.customerMenu(scan, customer);
                 }
+                else { isSignedIn = false;} //should send back to loop
+                }
             }
         }
-    }
+    } //fixme login broken now!
 
     private void signUpNewCustomer(Scanner scan) {  //return employee
         int menuState = 0;
