@@ -10,36 +10,36 @@ import java.sql.*;
 // resutset with prepared statement
 public class GormBankImp implements GormBankDao {
 
-    public Customer createNewCustomer( String username, String name, String password) throws SQLException, BusinessException{
+    public Customer createNewCustomer(String username, String name, String password) throws SQLException, BusinessException {
         //this method is used to create a new customer in the database - when applying to be a customer
         //checks if the username (or user id) exists,
         //and only create the customer if the user does not exist
         Customer customer = new Customer();         //creates customer object that will get returned if it goes well
         //database connection
-        Connection connection= PostgresConnection.getConnection();
-        String sql="INSERT INTO gormbank.customers\n" +
+        Connection connection = PostgresConnection.getConnection();
+        String sql = "INSERT INTO gormbank.customers\n" +
                 "(username, \"name\", \"password\")\n" +
                 "VALUES(?, ?, ?);\n";
-        PreparedStatement preparedStatement=connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        preparedStatement.setString(1,username);    //variables sent into DB
-        preparedStatement.setString(2,name);
-        preparedStatement.setString(3,password);
-        int c=preparedStatement.executeUpdate();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        preparedStatement.setString(1, username);    //variables sent into DB
+        preparedStatement.setString(2, name);
+        preparedStatement.setString(3, password);
+        int c = preparedStatement.executeUpdate();
         //fixme - should this be executeQuery instead?
-        if(c==1){
-            ResultSet resultSet=preparedStatement.getGeneratedKeys();
-            if(resultSet.next()){ //this is needed to get a response
-            customer.setUsername(resultSet.getString(2)); //index 1 should be userid
-            System.out.println("sysout username: "+ resultSet.getString(2));
-            customer.setName(resultSet.getString(3));
-            System.out.println("sysout name: "+ resultSet.getString(3));
-            customer.setPassword(resultSet.getString(4));
-            System.out.println("sysout PW: "+ resultSet.getString(4));
-            //need to set accounts//fixme
+        if (c == 1) {
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            if (resultSet.next()) { //this is needed to get a response
+                customer.setUsername(resultSet.getString(2)); //index 1 should be userid
+                System.out.println("sysout username: " + resultSet.getString(2));
+                customer.setName(resultSet.getString(3));
+                System.out.println("sysout name: " + resultSet.getString(3));
+                customer.setPassword(resultSet.getString(4));
+                System.out.println("sysout PW: " + resultSet.getString(4));
+                //need to set accounts//fixme
                 //check if these values were really set...
 
             }
-        }else {
+        } else {
             throw new BusinessException("Failure in registration... Please retry.....");
         }
         return customer; //this returns a customer even if it doesnt work...?
@@ -80,138 +80,125 @@ public class GormBankImp implements GormBankDao {
     }
 
 
-//ACCOUNTS
-    public void viewAllApplications() throws SQLException, BusinessException{ //fixme wrong method, but useful for getMyAccounts and getaccbyuser...
+    //ACCOUNTS
+    public void viewAllApplications() throws SQLException, BusinessException { //fixme wrong method, but useful for getMyAccounts and getaccbyuser...
         Connection connection = PostgresConnection.getConnection();
 //        String sql = "SELECT * from gormbank.accounts;";
         String sql = "select customers.userid, customers.username, customers.name, " +
-        "accounts.account_number, accounts.balance, accounts.status " +
-        "from gormbank.customers RIGHT join gormbank.accounts on accounts.userid = customers.userid " +
-         "WHERE status = 'pending';";
+                "accounts.account_number, accounts.balance, accounts.status " +
+                "from gormbank.customers RIGHT join gormbank.accounts on accounts.userid = customers.userid " +
+                "WHERE status = 'pending';";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
         System.out.println("Query executed - replace with trace");
         System.out.println("RESULTS\n");
-            while (resultSet.next()) {
-                System.out.print(" Account: " + resultSet.getLong("account_number"));
-                System.out.print(" Balance : " + resultSet.getDouble("balance")); //wrong type, fixme
-                System.out.print(" User: " + resultSet.getString("username"));
-                System.out.print(" Name: " + resultSet.getString("name"));
-                System.out.print(" User: " + resultSet.getString("name"));
-                System.out.print(" Status: " + resultSet.getString("status"));
-                System.out.println("\n");
+        while (resultSet.next()) {
+            System.out.print(" Account: " + resultSet.getLong("account_number"));
+            System.out.print(" Balance : " + resultSet.getDouble("balance")); //wrong type, fixme
+            System.out.print(" User: " + resultSet.getString("username"));
+            System.out.print(" Name: " + resultSet.getString("name"));
+            System.out.print(" User: " + resultSet.getString("name"));
+            System.out.print(" Status: " + resultSet.getString("status"));
+            System.out.println("\n");
 
-            } //dont actually need the balance...
+        } //dont actually need the balance...
 
     }
-    public void applyForAccount (Customer customer) throws SQLException, BusinessException {
 
-            System.out.println("temp function");
-        }
-    public void viewAccountsByUsername(Customer customer) throws SQLException, BusinessException {   //used by employee and customer to view employees...
+    public void applyForAccount(Customer customer) throws SQLException, BusinessException {
 
         System.out.println("temp function");
+    }
+
+    public void viewAccountsByAccountNum(long accountNum) throws SQLException, BusinessException {   //used by employee and customer to view employees...
+        System.out.println("temp function");
+        Connection connection = PostgresConnection.getConnection();
+//        String sql = "SELECT * from gormbank.accounts;";
+        String sql = "select customers.userid, customers.username, customers.name, " +
+                "accounts.account_number, accounts.balance, accounts.status " +
+                "from gormbank.customers RIGHT join gormbank.accounts on accounts.userid = customers.userid " +
+                "WHERE account_number = 1;";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+//        preparedStatement.setLong(4, accountNum);    //issue!?
+        System.out.println("Query executed - replace with trace");
+        System.out.println("RESULTS\n");
+        while (resultSet.next()) {
+            System.out.print(" Account: " + resultSet.getLong("account_number"));
+            System.out.print(" Balance: " + resultSet.getDouble("balance")); //wrong type, fixme
+            System.out.print(" User: " + resultSet.getString("username"));
+            System.out.print(" Name: " + resultSet.getString("name"));
+            System.out.print(" User: " + resultSet.getString("name"));
+            System.out.print(" Status: " + resultSet.getString("status"));
+            System.out.println("\n");
+
+        } //why is this not returning any results? with or without setting long in prepared statement
+        //no errors, just no results
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+    public Customer findCustomerByLoginNoPW(String username, String pw) throws SQLException, BusinessException{
+        System.out.println("temp function");
+        return new Customer();
     }
     public void viewAccountsByUsername(String username) throws SQLException, BusinessException {   //used by employee and customer to view employees...
-            //WORKING - use viewAllAccounts
+        Connection connection = PostgresConnection.getConnection();
+//        String sql = "SELECT * from gormbank.accounts;";
+        String sql = "select customers.userid, customers.username, customers.name, " +
+                "accounts.account_number, accounts.balance, accounts.status " +
+                "from gormbank.customers RIGHT join gormbank.accounts on accounts.userid = customers.userid " +
+                "WHERE username = ? ;";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, username);    //variables sent into sql/preparedStatement
+        ResultSet resultSet = preparedStatement.executeQuery();
+        System.out.println("Query executed - replace with trace");
+        System.out.println("RESULTS\n");
+        while (resultSet.next()) {
+            System.out.print(" Account: " + resultSet.getLong("account_number"));
+            System.out.print(" Balance : " + resultSet.getDouble("balance")); //wrong type, fixme
+            System.out.print(" User: " + resultSet.getString("username"));
+            System.out.print(" Name: " + resultSet.getString("name"));
+            System.out.print(" User: " + resultSet.getString("name"));
+            System.out.print(" Status: " + resultSet.getString("status"));
+            System.out.println("\n");
+
+        } //dont actually need the balance...
+    }
+
+    public void withdrawFunds(Customer customer, long accountNum, double amount) throws SQLException, BusinessException {
         System.out.println("temp function");
     }
 
-    public void withdrawFunds(Customer customer, long accountNum, double amount) throws SQLException, BusinessException{
+    public void depositFunds(Customer customer, long accountNum, double amount) throws SQLException, BusinessException {
         System.out.println("temp function");
     }
-    public void depositFunds(Customer customer, long accountNum, double amount) throws SQLException, BusinessException{
+
+    public void transferFunds(Customer customer, long accountNum, long accountNum2, double amount) throws SQLException, BusinessException {
         System.out.println("temp function");
     }
-    public void transferFunds(Customer customer, long accountNum, long accountNum2, double amount) throws SQLException, BusinessException{
+    public void viewMyAccounts(Customer customer)throws SQLException, BusinessException { //shows user their own accounts
         System.out.println("temp function");
+        //
     }
 
 //TRANSACTIONS
 
-//        public void viewAllLogs () throws SQLException, BusinessException {
-//            Customer customer = new Customer();
-//
-//            //step 2 connection
-//            Connection connection = PostgresConnection.getConnection();
-//            //Step 3- Create Statement
-//            String sql = "SELECT * from gormbank.transactions ;";
-//            PreparedStatement preparedStatement = connection.prepareStatement(sql); //2nd par makes keys returnable...
-//            //Step 4 - Execute Query
-//            ResultSet resultSet = preparedStatement.executeQuery();
-//            System.out.println("Query executed");
-//
-//            //Step 5 - Process Results  THIS WILL BE IMPORTANT~
-//            //        while (resultSet.next()){
-//            if (resultSet.next()) {
-//                System.out.print(" Name : " + resultSet.getString("username"));
-//                System.out.print(" Name : " + resultSet.getString("name"));
-//                System.out.print(" City : " + resultSet.getString("password"));
-//                //put variables in customer and return it!
-//                //set name and password - but only if returned from DB
-//                customer.setUsername(resultSet.getString("username"));
-//                customer.setName(resultSet.getString("name"));
-//                customer.setPassword(resultSet.getString("password"));
-//            } //needs testing
-//            else {
-//                throw new BusinessException("No User Found, Please Check Your Username and Password");
-//            } //if no results, throw exception
-//            return customer;
-//
-//        }
-    }
-//~~~~~~~~~~~~~~~~~~~~~~~~
-//        Customer customer = new Customer();         //creates customer object that will get returned if it goes well
-//        //database connection
-//        Connection connection = PostgresConnection.getConnection();
-//        String sql = "SELECT username, \"name\", \"password\" from gormbank.customers WHERE username = ? AND \"password\" = ?;";
-//        PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-//        preparedStatement.setString(1, username);    //variables sent into DB
-//        preparedStatement.setString(2, pw);
-//        System.out.println("mark 1");
-//
-//
-//        boolean hasResult = preparedStatement.execute();
-//        //exectueeUpdate only for DML, returns row count of rows changed
-//        //executeQuery, returns ResultSet
-//        //The execute method returns a boolean to indicate the form of the first result.
-//        // ...You must call either the method getResultSet or getUpdateCount to retrieve the result;
-//        // ...you must call getMoreResults to move to any subsequent result(s).
-//
-//        System.out.println("mark2"); //this was not reached
-//        if (hasResult == true) {
-//
-//            System.out.println("mark3"); //this was not reached
-//            ResultSet resultSet = preparedStatement.getGeneratedKeys();
-//            if (resultSet.next()) { //this is needed to get a response
-//                customer.setUsername(resultSet.getString(1));
-//                customer.setName(resultSet.getString(2));
-//                customer.setPassword(resultSet.getString(3));
-//                System.out.println("mark2"); //this was not reached
-//                //need to set accounts fixme... wait, no I dont?
-//            }
-//        }
+//        public void viewAllLogs () throws SQLException, BusinessException {}
 
 
-//        public void viewAllLogs() throws SQLException, BusinessException{
-//            Connection connection= PostgresConnection.getConnection();
-//            Statement statement=connection.createStatement(); //this looks important...
-//            String sql="select * from gormbank.transactions;";
-//            //Step 4 - Execute Query
-//            ResultSet resultSet=statement.executeQuery(sql);
-//            System.out.println("Query executed");
-//
-//            //Step 5 - Process Results
-//            while (resultSet.next()){
-//                System.out.print("Id : "+resultSet.getInt("id"));
-//                System.out.print(" Name : "+resultSet.getString("name"));
-//                System.out.print(" City : "+resultSet.getString("city"));
-//                System.out.print(" Gender : "+resultSet.getString("gender"));
-//                System.out.print(" Age : "+resultSet.getInt("age"));
-//                System.out.println(" Contact : "+resultSet.getLong("contact"));
-//            }
-    //fixme
-
-
-//https://www.softwaretestinghelp.com/jdbc-connection-steps/#:~:text=From%20Java%207%20onwards%2C%20we%20can%20close%20the,try%20block%2C%20it%20will%20automatically%20close%20the%20connection.
-
+}

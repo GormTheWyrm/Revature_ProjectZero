@@ -16,19 +16,25 @@ public interface GormBankDao {
         //should use customer object to validate signin... no, creates a new account with status pending under
     public Customer findCustomerByLogin(String username, String pw) throws SQLException, BusinessException;
         //result was returned where none was requested
+    public void viewAllApplications() throws SQLException, BusinessException; //views all accounts with "pending" status
+                    //is basically viewAllPendingApplications...should I change name? no
+    public void viewAccountsByUsername(String username) throws SQLException, BusinessException;   //used by employee to view customers... without getting pw
+
+
 
 //currently testing
+    public void viewAccountsByAccountNum(long accountNum) throws SQLException, BusinessException;   //used by ...
+        // did not sout anything
+    //not built
+public void viewMyAccounts(Customer customer)throws SQLException, BusinessException; //shows user their own accounts
 
-    public void viewAllApplications() throws SQLException, BusinessException; //oops... i dont think I need this... also broken
 //public Customer findCustomerByLoginNoPW(String username, String pw) throws SQLException, BusinessException;
     //should be find account by customer!
-    //not built
+
 //    public void viewAccountsById() //oops... did I need this?
     //need work
     //ApproveAccount()  //
-    public void viewAccountsByUsername(Customer customer) throws SQLException, BusinessException;   //used by ...
-    public void viewAccountsByUsername(String username) throws SQLException, BusinessException;   //used by employee to view customers... without getting pw
-    //viewAllPendingApplications
+
     //findCustomerByUsername()
     //findCustomerByAccountNumber
     public void withdrawFunds(Customer customer, long accountNum, double amount) throws SQLException, BusinessException;
@@ -43,6 +49,12 @@ public interface GormBankDao {
 //    public void viewAllLogs() throws SQLException, BusinessException;
     //createTransaction //used to create record of any activity...
 
+
+
+
+
+
+
     //NOTES
     //"as a user, I can login", does that mean employees must login too?
     //input customer or employee objects -user object?) to ensure that the correct person is logged in!
@@ -53,7 +65,7 @@ public interface GormBankDao {
     //see applications  -   select * from account where status = 'pending'; - accountDAO
     //viewAccountsByUsername - customerDao?
 
-
+//need to get a delete function to prove my CRUD
     /*
     currently:
         users can sign up for an account

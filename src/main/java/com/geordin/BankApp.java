@@ -155,7 +155,7 @@ public class BankApp {
             log.info("\n\n\nSigned in as "+customer.getUsername());
             try {
                 log.info("Customer Menu. Please select an option");
-                log.info("1. See Accounts \n2. Apply For New Account \n3. Select An Account \n4. Return to Main Menu");
+                log.info("1. See My Accounts \n2. Apply For New Account \n3. Select An Account \n4. Return to Main Menu");
                     menuState = Integer.parseInt(scan.nextLine());
                     //scan.nextInt(); //parse this with ingeter wrapper from nextline
                     //number format exception!
@@ -164,8 +164,8 @@ public class BankApp {
                     case 0:
                         log.info("please enter an integer between 1 and 4"); //redirected by catch block
                         break;
-                    case 1: //should display accounts   -including status   //
-                        bankImp.viewAccountsByUsername(customer);
+                    case 1: //should display customers own accounts   -including status   //
+                        bankImp.viewMyAccounts(customer);
                         log.warn("this should display all accounts for the user");
                         break;
                     case 2:
@@ -207,7 +207,7 @@ public class BankApp {
                         log.info("please enter an integer between 1 and 4");//catch statement redirects here
                         break;
                     case 1: //should display accounts   -including status   //
-                        bankImp.viewAccountsByUsername(customer);
+                        bankImp.viewMyAccounts(customer);
                         log.warn("this should display all accounts for the user");
                         //call function to display all accounts for that customer, customer as parameter
                         break;
@@ -264,12 +264,13 @@ public class BankApp {
     private void employeeMenu(Scanner scan){ //fixme
         int menuState = 0;
         GormBankImp bankDao = new GormBankImp();
-        while (menuState != 9){
+        while (menuState != 10){
             String username;
             Long accountNumber;
         try{
-            log.info("\n\n\n\n\nEmployee Menu\nPlease select an option\n1. See all applications\n2. Search Accounts By Username\n3. Approve Account By Account Number");
-            log.info("4. Deny Account by Account Number\n5. View Logs by Account\n6. View Logs By User\n7. View Logs by Date\n8. View All Logs\n9. Return to Main Menu");
+            log.info("\n\n\n\n\nEmployee Menu\nPlease select an option\n1. See all applications\n2. Search Accounts By Username");
+            log.info("3. Search Account by Account Number\n4. Approve Account By Account Number\n5. Deny Account by Account Number");
+            log.info("6. View Logs by Account\n7. View Logs By User\n8. View Logs by Date\n9. View All Logs\n10. Return to Main Menu");
             //should accounts with zero money send a notice to employee?...hmm... later maybe
             menuState = Integer.parseInt(scan.nextLine());
             //scan.nextInt(); //parse this with ingeter wrapper from nextline
@@ -278,49 +279,50 @@ public class BankApp {
                 switch (menuState){
             case 0: log.info("please enter an integer between 1 and 9");
                 break;
-            case 1: //see all applications
-//                bankDao.viewAccountsById(accountNumber); //oops
-//                bankDao.viewAccountsByUsernameNoPW();
-                //viewaccount by customer!
-                bankDao.viewAllApplications();
+            case 1:  bankDao.viewAllApplications(); //displays pending applications
                 break;
             case 2:
                 log.info("Search By Username; Please enter Username.");
                 username = scan.nextLine();
-                //searchAccountsByUsername()
+                bankDao.viewAccountsByUsername(username);//displays accounts that match query username
                 break;
             case 3:
+                log.info("Search By Account Number; Please enter Account Number.");
+                accountNumber = Long.parseLong(scan.nextLine());
+                bankDao.viewAccountsByAccountNum(accountNumber);//displays accounts that match query username
+                break;
+            case 4:
                 log.info("Please Enter Account To Approve.");
                 accountNumber = Long.parseLong(scan.nextLine());
                 //must catch arithmetic exception
                 //approveAccountByAccountNumber
                 break;
-            case 4:
+            case 5:
                 log.info("Please Enter Account To Deny.");
                 accountNumber = Long.parseLong(scan.nextLine());
                 //must catch arithmetic exception
                 // denyAccountByAccountNumber
                 break;
-            case 5:
+            case 6:
                 log.info("Please Enter Account To View Logs.");
                 accountNumber = Long.parseLong(scan.nextLine());
                 //must catch arithmetic exception
                 //viewLogsByAccountNumber
                 break;
-            case 6:
+            case 7:
                 log.info("Please Enter User To View Logs.");
                 username = scan.nextLine();
                 //viewLogsByUser
                 break;
-            case 7:
+            case 8:
                 log.warn("View By Date Not Implemented");
                 //viewLogsByDate
 //                String date = Long.parseLong(scan.nextLine()); //what type to use for date?String?
                 break;
-            case 8: //viewAllLogs
+            case 9: //viewAllLogs
                 log.warn("view all longs not yet implemented");
                 break;
-            case 9: log.info("Returning to Main Menu");
+            case 10: log.info("Returning to Main Menu");
                 break;
 
             default: log.info("Please enter an integer between 1 and 9");
