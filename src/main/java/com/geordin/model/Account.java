@@ -5,8 +5,17 @@ import java.util.Objects;
 public class Account {
     long accountNumber;
     double balance;
-    String userId;
+//    String userId;
     String status;
+    String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public long getAccountNumber() {
         return this.accountNumber;
@@ -24,13 +33,13 @@ public class Account {
         this.balance = balance;
     }
 
-    public String getUserId() {
-        return this.userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
+//    public String getUserId() {
+//        return this.userId;
+//    }
+//
+//    public void setUserId(String userId) {
+//        this.userId = userId;
+//    }
 
     public String getStatus() {
         return status;
@@ -46,10 +55,10 @@ public class Account {
     }
     @Override
     public String toString(){
-        return ("Account Number: "+ this.accountNumber + " Balance: "+ this.balance + " UserId: " + this.userId); //may need to change this to userid?
-    }
+        return ("Account Number: "+ this.accountNumber + " Balance: "+ this.balance + " Username: " + this.username); //may need to change this to userid?
+    } //switch to getters!
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o) { //for now, just comparing usernames should suffice
         if (!(o instanceof Account)){ return false;}
         Account other = (Account) o;
         return this.accountNumber == other.accountNumber;
@@ -58,3 +67,4 @@ public class Account {
 }
 // https://docs.oracle.com/javase/8/docs/api/java/util/Hashtable.html
 //adding a dateCreated would be good practice
+//need to fix my equals, hashcode,ToString fixme

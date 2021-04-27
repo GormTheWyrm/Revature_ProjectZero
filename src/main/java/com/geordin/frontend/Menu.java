@@ -2,11 +2,13 @@ package com.geordin.frontend;
 
 import com.geordin.BusinessException;
 import com.geordin.business.BusinessLayer;
+import com.geordin.model.Account;
 import com.geordin.model.Customer;
 import com.geordin.model.Employee;
 import org.apache.log4j.Logger;
 
 import java.util.Scanner;
+import java.util.Vector;
 
 public class Menu { //may change name to app...
     private static Logger log=Logger.getLogger(Menu.class);
@@ -31,13 +33,6 @@ public class Menu { //may change name to app...
             //first layer
             String user;
             String pw;
-
-
-            // choose type to log in
-            //then type in credentials or details - separate minimenu for all 3 options!
-            // should end in a customer or employee object... cast as user?
-            //send to a new menu!!! ...not return anything but pass in the user!
-
                 try{
                     log.info("\n\n\n\n\nMain Menu\nPlease select an option\n#1. sign in as a customer\n#2. sign up as a customer\n#3. sign in as employee\n#4. Quit");
                     menuState  = Integer.parseInt(scan.nextLine());
@@ -62,8 +57,11 @@ public class Menu { //may change name to app...
                         }
                         else{
                             try{
-                                Customer customer = businessLayer.signInOldCustomer(scan, user, pw);
+                                Customer customer = businessLayer.signInOldCustomer(scan, user, pw); //fixme - null here...
+                                log.info("Redirecting to Customer Menu: "+ customer.getUsername()); //fixme - returning null
+                                log.trace(businessLayer.signInOldCustomer(scan, user, pw));         //fixme -null
                                 this.customerMenu(scan, customer);
+
                             }
                             catch (BusinessException e){
                             }
@@ -111,8 +109,62 @@ public class Menu { //may change name to app...
         //I AM HERE fixme
 
     }
-    public void customerMenu(Scanner scan, Customer customer){
+    public void customerMenu(Scanner scan, Customer customer) throws BusinessException {
         //goes here when customer is logged in
+        int menuState = 0;
+        BusinessLayer businessLayer = new BusinessLayer(); //there is probably a better way to do this than creating one for each menu...
+        while (menuState != 6){
+            log.info("\n\n\nSigned in as "+customer.getUsername()); //fixme showing up null...
+            try {
+                log.info("Customer Menu. Please select an option");
+                log.info("1. See My Accounts \n2. Apply For New Account \n3. Make A Withdrawal\n4. Make A Deposit\n5. Transfer Money\n6. Return to Main Menu");
+
+
+                menuState = Integer.parseInt(scan.nextLine());
+
+            } catch (NumberFormatException e){
+                log.info("Invalid entry");
+                menuState = 0;
+            }
+//fixme need all options! cases not set yet
+                switch (menuState) {
+                    case 0:
+                        log.info("please enter an integer between 1 and 6"); //redirected by catch block
+                        break;
+                    case 1: //should display customers own accounts   -including status   //
+                        try {//this needs to set accounts, but for nwo it can just display them
+                            Vector<Account> tempAccounts = new Vector<>();
+                            tempAccounts = businessLayer.findMyAccounts(customer); //fixme here
+                        }
+                        catch (BusinessException e) {
+                            log.info(e.getMessage());
+                            menuState = 0;
+                        }
+                        //should return account collection and then log all accounts
+//                        bankImp.viewMyAccounts(customer);
+//                        log.warn("this should display all accounts for the user");
+                        break;
+//                    case 2:
+//                        //creates a new account and says something about waiting up to 48 hours
+//                        bankImp.applyForAccount(customer);
+//                        log.warn("this should create a new account with pending status");
+//                        //it would be great if users could only have 1 pending account at a time...
+//                        break;
+//                    case 3:
+//                        this.customerAccountMenu(scan, customer); //sends to a new menu
+//                        break;
+//                    case 4:
+//                        log.info("returning to main menu...");
+//                        this.mainMenu(scan);
+//                        break;
+                    default:
+                        log.info("Please enter an integer between 1 and 6");
+                }
+
+        }//currently broken , not fixed yet
+
+
+
 
     }
     public void EmployeeMenu(Scanner scan, Employee employee){

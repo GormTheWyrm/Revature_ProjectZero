@@ -1,9 +1,11 @@
 package com.geordin.DAO;
 
 import com.geordin.BusinessException;
+import com.geordin.model.Account;
 import com.geordin.model.Customer;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface GormBankDao {
     //this will declare all of the methods that need to access the database!
@@ -22,6 +24,9 @@ public interface GormBankDao {
 
 
 //currently testing
+public List<Account> findAccountsByUsername(String username) throws SQLException, BusinessException;   //used by employee to view customers... without getting pw
+    //replacing viewAccountsByUsername  fixme currently working on this!
+
     public void viewAccountsByAccountNum(long accountNum) throws SQLException, BusinessException;   //used by ...
         // did not sout anything
     //not built

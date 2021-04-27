@@ -3,9 +3,11 @@ package com.geordin.DAO.Imp;
 import com.geordin.BusinessException;
 import com.geordin.DAO.GormBankDao;
 import com.geordin.bdutil.PostgresConnection;
+import com.geordin.model.Account;
 import com.geordin.model.Customer;
 
 import java.sql.*;
+import java.util.Vector;
 
 // resutset with prepared statement
 public class GormBankImp implements GormBankDao {
@@ -60,19 +62,66 @@ public class GormBankImp implements GormBankDao {
         //Step 5 - Process Results  THIS WILL BE IMPORTANT~
         //        while (resultSet.next()){
         if (resultSet.next()) {
-            System.out.println("Login Successful, welcome "+ resultSet.getString("username")); //just realized I dont need to display the records for this
+//            System.out.println("Login Successful, welcome "+ resultSet.getString("username")); //just realized I dont need to display the records for this
 
             //put variables in customer and return it!
             //set name and password - but only if returned from DB
             customer.setUsername(resultSet.getString("username"));
             customer.setName(resultSet.getString("name"));
             customer.setPassword(resultSet.getString("password"));
+            System.out.println("DAO loginOldCustomer: " + customer.getUsername());
         } //needs testing
         else {
             throw new BusinessException("No User Found");
         } //if no results, throw exception
         return customer;
     }
+
+    public Vector<Account> findAccountsByUsername(String username) throws SQLException, BusinessException {   //used by employee and customer to view employees...
+        //old function...
+        Connection connection = PostgresConnection.getConnection();
+//        String sql = "SELECT * from gormbank.accounts;";
+        String sql = "select customers.userid, customers.username, customers.name, " +
+                "accounts.account_number, accounts.balance, accounts.status " +
+                "from gormbank.customers RIGHT join gormbank.accounts on accounts.userid = customers.userid " +
+                "WHERE username = ?;";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, username);    //variables sent into sql/preparedStatement
+//        preparedStatement.setString(2, password);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        System.out.println("Query executed - replace with trace");
+        Vector<Account> accounts = new Vector<>();
+
+
+//        System.out.println("RESULTS\n");
+        while (resultSet.next()) {
+            Account account = new Account();
+            account.setAccountNumber(resultSet.getLong("account_number"));
+            account.setBalance(resultSet.getDouble("balance"));
+            account.setUsername(resultSet.getString("username"));
+            account.setStatus(resultSet.getString("status"));
+
+            System.out.println("DAO RESULTS");
+            System.out.print(" Account: " + resultSet.getLong("account_number"));
+            System.out.print(" Balance : " + resultSet.getDouble("balance")); //wrong type, fixme
+            System.out.print(" User: " + resultSet.getString("username"));
+            System.out.print(" Name: " + resultSet.getString("name"));
+            System.out.print(" User: " + resultSet.getString("name"));
+            System.out.print(" Status: " + resultSet.getString("status"));
+            System.out.println("\n");
+                accounts.add(account);
+        } //what happens if returns null? ...or empty accounts? fixme test this!
+
+        return accounts;
+
+    }
+
+
+
+
+
+
+
 
 
     //ACCOUNTS
@@ -131,35 +180,22 @@ public class GormBankImp implements GormBankDao {
         //no errors, just no results
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
     public Customer findCustomerByLoginNoPW(String username, String pw) throws SQLException, BusinessException{
         System.out.println("temp function");
         return new Customer();
     }
-    public void viewAccountsByUsername(String username) throws SQLException, BusinessException {   //used by employee and customer to view employees...
+    public void viewAccountsByUsername(String username, String password) throws SQLException, BusinessException {   //used by employee and customer to view employees...
+        //just added a password to this... broke original bankapp
         Connection connection = PostgresConnection.getConnection();
 //        String sql = "SELECT * from gormbank.accounts;";
         String sql = "select customers.userid, customers.username, customers.name, " +
                 "accounts.account_number, accounts.balance, accounts.status " +
                 "from gormbank.customers RIGHT join gormbank.accounts on accounts.userid = customers.userid " +
-                "WHERE username = ? ;";
+                "WHERE username = ? AND password = ?;";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, username);    //variables sent into sql/preparedStatement
+        preparedStatement.setString(2, password);
         ResultSet resultSet = preparedStatement.executeQuery();
         System.out.println("Query executed - replace with trace");
         System.out.println("RESULTS\n");
@@ -173,6 +209,33 @@ public class GormBankImp implements GormBankDao {
             System.out.println("\n");
 
         } //dont actually need the balance...
+    }
+    public void viewAccountsByUsername(String username) throws SQLException, BusinessException {   //used by employee and customer to view employees...
+        //old function...
+        Connection connection = PostgresConnection.getConnection();
+//        String sql = "SELECT * from gormbank.accounts;";
+        String sql = "select customers.userid, customers.username, customers.name, " +
+                "accounts.account_number, accounts.balance, accounts.status " +
+                "from gormbank.customers RIGHT join gormbank.accounts on accounts.userid = customers.userid " +
+                "WHERE username = ?;";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, username);    //variables sent into sql/preparedStatement
+//        preparedStatement.setString(2, password);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        System.out.println("Query executed - replace with trace");
+        System.out.println("RESULTS\n");
+        while (resultSet.next()) {
+            System.out.print(" Account: " + resultSet.getLong("account_number"));
+            System.out.print(" Balance : " + resultSet.getDouble("balance")); //wrong type, fixme
+            System.out.print(" User: " + resultSet.getString("username"));
+            System.out.print(" Name: " + resultSet.getString("name"));
+            System.out.print(" User: " + resultSet.getString("name"));
+            System.out.print(" Status: " + resultSet.getString("status"));
+            System.out.println("\n"); //not log, but put into list!
+
+
+        } //dont actually need the balance...
+
     }
 
     public void withdrawFunds(Customer customer, long accountNum, double amount) throws SQLException, BusinessException {

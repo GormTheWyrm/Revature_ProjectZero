@@ -82,6 +82,10 @@ public class Customer extends User{
         // probably need to take into account number of accounts...
     }
     //do I need to override accounts toString?
+    @Override
+    public String toString(){
+        return ("Username: "+ this.getUsername() + " Name: "+ this.getName()); //may need to change this to userid?
+    }
 }
 //https://docs.oracle.com/javase/8/docs/api/java/util/Hashtable.html
 // https://www.w3spoint.com/hashtable-in-java#:~:text=Hashtable%20in%20java%20example%20program%20code%20%3A%20Hashtable,in%20key-value%20pair.%20It%20not%20allowed%20duplicate%20key.
