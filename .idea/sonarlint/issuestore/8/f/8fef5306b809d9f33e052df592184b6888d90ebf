@@ -1,0 +1,14 @@
+
+‚
+java:S1149:"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(È›Ùı8¾Õ©‘/
+f
+java:S1134 "DTake the required action to fix the issue indicated by this comment.(íéúùşÿÿÿÿ8Úøá¥‘/
+‚
+java:S11499"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(š¾Îİ8éÔ´©‘/
+M
+java:S1172"+Remove this unused method parameter "scan".(êÂ÷üÿÿÿÿ8ßÎö¤‘/
+]
+java:S11263"AReplace this if-then-else statement by a single return statement.(É•İG8Âº¾¦‘/
+M
+java:S1172 "+Remove this unused method parameter "scan".(íéúùşÿÿÿÿ8ÖÎ¥‘/
+X	java:S125*"<This block of commented-out lines of code should be removed.(ò½é8Î¥­‘/

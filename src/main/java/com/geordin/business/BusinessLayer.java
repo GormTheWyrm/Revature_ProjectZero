@@ -26,22 +26,28 @@ public class BusinessLayer {
             log.trace(e.getMessage()); //hopefully that logs the actual error for the developers to find
             throw new BusinessException("Could not find username or password. Please check your spelling and try again.");
         }
+        catch (BusinessException e){
+            //if found someone
+            throw new BusinessException("Username already taken.");
+        }
     return customer; //should not return null customer... I hope
     }
 
     public Customer signInNewCustomer(Scanner scan, String user, String name, String pw) throws BusinessException { //fixme working here
         try{
-            Customer customer = bankImp.createNewCustomer(user, name, pw);
+            customer = bankImp.createNewCustomer(user, name, pw);
             log.trace("business layer - signInNewCustomer: "+ customer.getUsername());
         }
+
         catch (BusinessException e){
             //if found someone
             throw new BusinessException("Username already taken.");
-        }
+        }//order shouldnt matter?
         catch (SQLException e){
-            log.trace(e.getMessage()); //hopefully that logs the actual error for the developers to find
-            throw new BusinessException("Database Error, please inform IT department");
-        }
+//            log.trace(e.getMessage()); //commented out because it breaks app...
+            throw new BusinessException("Database Error, username may already be taken"); //this is also catching pw/user mismtch
+        }//fixme need to validate before entering DB to prevent injection attacks!
+
         return customer; //should not return null customer... I hope
     }
     public boolean signInEmployee(String pw){ //seems to work
@@ -51,43 +57,30 @@ public class BusinessLayer {
         else {return false;}
     } //will need to edit this if real login required...
 
-    public Vector<Account> findMyAccounts(Customer customer) throws BusinessException{  //fixme testing here!
-        //pass in customer, should return a collection of accounts...
-        //set list to findAccountsByUsername(customer.getUsername()) throws business exception; fixme here
-//        public void viewAccountsByUsername(customer.getUsername(), customer.getPassword()); //not revalidating password... thats an issue
-        //need to pass this into a collection instead of simply logging it...
+    public Vector<Account> findMyAccounts(Customer customer) throws BusinessException{  //works, but am not revalidating pw
         Vector<Account> accounts = new Vector<>();
         try{
         accounts = bankImp.findAccountsByUsername(customer.getUsername());
         log.trace("Business Layer, findMyAccounts: " + accounts); //this is not for the user - displays but ugly
         return accounts;
-        //needs testing fixme might need to be iterated...
         }
         catch (BusinessException e){
-            //if found someone
             throw new BusinessException("No accounts found");
         }
         catch (SQLException e){
-            log.trace(e.getMessage()); //hopefully that logs the actual error for the developers to find
+//            log.trace(e.getMessage()); //this remains commented because it might break code... but it seems important
             throw new BusinessException("Database Error, please inform IT department");
         }
 
     }
+    public void applyForAccount(Customer customer) throws BusinessException{
+        try {
+            bankImp.applyForAccount(customer);
+        }
+        catch(BusinessException | SQLException e){
+            throw new BusinessException("An error occurred. Account not created");
+        }
+    }
 
+    }
 
-    //I need to implement a business layer...
-
-    /*need to know
-        1. customer or employee
-        2. current user object (employee or cutomer)
-            - accounts...
-         3... what to do with the above info...
-
-
-
-     */
-
-
-
-
-}

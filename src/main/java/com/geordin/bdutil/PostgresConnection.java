@@ -1,5 +1,7 @@
 package com.geordin.bdutil;
 
+import org.apache.log4j.Logger;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -8,7 +10,7 @@ public class PostgresConnection {
 // this should create a single DB connection connection which can be imported.
     private PostgresConnection(){}
     private static Connection connection;
-
+    private static Logger log=Logger.getLogger(PostgresConnection.class);
     static {
         try {
             Class.forName("org.postgresql.Driver");
@@ -17,7 +19,8 @@ public class PostgresConnection {
             String password="password"; //move this/these to an environmental variable eventually
             connection= DriverManager.getConnection(url,username,password);
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println(e);
+            log.warn(e.getMessage()); //may need to handle this...
+            System.exit(1);//exit app - crash!
         }
     }
     public static Connection getConnection(){

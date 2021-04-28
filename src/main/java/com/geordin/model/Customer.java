@@ -9,6 +9,7 @@ public class Customer extends User{
     private String name;
 //    Hashtable<Long, Account> accounts = new Hashtable<>();
     ArrayList<Account> accounts = new ArrayList<>();
+    //not using accounts yet... change to set...
 
 //getters, setters
     public String getName() {

@@ -1,31 +1,41 @@
 
-Z
-java:S1854º"<Remove this useless assignment to local variable "username".(ÄöŠî8ˆöİˆ‘/
-…
-java:S1192%"hDefine a constant instead of duplicating this literal "please enter an integer between 1 and 4" 3 times.(÷¥‰Ê8•ÃÌ/
-d
-java:S1854¨"ARemove this useless assignment to local variable "accountNumber".(àğ…ˆøÿÿÿÿ8ˆöİˆ‘/
-a
-java:S1134ã"DTake the required action to fix the issue indicated by this comment.(ÄêîG8ˆöİˆ‘/
-f
-java:S1134["DTake the required action to fix the issue indicated by this comment.(Ğœ£ºûÿÿÿÿ8ÁÖû/
-z	java:S135;"YReduce the total number of break and continue statements in this loop to use at most one.(š“…ÿÿÿÿÿ8íÈ«÷/
-d
-java:S1854®"ARemove this useless assignment to local variable "accountNumber".(àğ…ˆøÿÿÿÿ8ˆöİˆ‘/
 L
-java:S1125×")Remove the literal "false" boolean value.(š“…ÿÿÿÿÿ8ˆöİˆ‘/
-b
-java:S1134ˆ"DTake the required action to fix the issue indicated by this comment.(Ã»öµ8Ù·‹ü/
+java:S1125Ş")Remove the literal "false" boolean value.(š“…ÿÿÿÿÿ8ˆöİˆ‘/
+d
+java:S1854µ"ARemove this useless assignment to local variable "accountNumber".(àğ…ˆøÿÿÿÿ8ˆöİˆ‘/
+a
+java:S1134ê"DTake the required action to fix the issue indicated by this comment.(ÄêîG8ˆöİˆ‘/
 K
 java:S1125;")Remove the literal "false" boolean value.(š“…ÿÿÿÿÿ8ƒ±ò/
-t
-java:S1192D"WDefine a constant instead of duplicating this literal "Returning to main Menu" 4 times.(Ûİœª8íÈ«÷/
-y
-java:S1192Ş"VDefine a constant instead of duplicating this literal "not implemented yet!!" 3 times.(ç¨´Éüÿÿÿÿ8Ù·‹ü/
-X	java:S125,"<This block of commented-out lines of code should be removed.(¬¶ğÑ8Ò»Åı/
-d
-java:S1854´"ARemove this useless assignment to local variable "accountNumber".(àğ…ˆøÿÿÿÿ8ˆöİˆ‘/
+…
+java:S1192%"hDefine a constant instead of duplicating this literal "please enter an integer between 1 and 4" 3 times.(÷¥‰Ê8•ÃÌ/
 Š
 java:S1192@"hDefine a constant instead of duplicating this literal "Or type EXIT to return to the main menu" 3 times.(™€öåÿÿÿÿÿ8¦ÁÌı/
+X	java:S125,"<This block of commented-out lines of code should be removed.(¬¶ğÑ8Ò»Åı/
+o
+java:S37766"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(¡½ÜÖ8Í‚¹‘/
+Z
+java:S1854Á"<Remove this useless assignment to local variable "username".(ÄöŠî8ˆöİˆ‘/
+z	java:S135;"YReduce the total number of break and continue statements in this loop to use at most one.(š“…ÿÿÿÿÿ8íÈ«÷/
+d
+java:S1854¯"ARemove this useless assignment to local variable "accountNumber".(àğ…ˆøÿÿÿÿ8ˆöİˆ‘/
+y
+java:S1192å"VDefine a constant instead of duplicating this literal "not implemented yet!!" 3 times.(ç¨´Éüÿÿÿÿ8Ù·‹ü/
+`
+java:S1134]"DTake the required action to fix the issue indicated by this comment.(ùü±G8ÃÀ¹¡‘/
+f
+java:S1134`"DTake the required action to fix the issue indicated by this comment.(Ğœ£ºûÿÿÿÿ8ÁÖû/
+t
+java:S1192D"WDefine a constant instead of duplicating this literal "Returning to main Menu" 4 times.(Ûİœª8íÈ«÷/
+a
+java:S1134h"DTake the required action to fix the issue indicated by this comment.(âÚ¨°8ô£¡‘/
+d
+java:S1854»"ARemove this useless assignment to local variable "accountNumber".(àğ…ˆøÿÿÿÿ8ˆöİˆ‘/
 b
-java:S1134Ñ"DTake the required action to fix the issue indicated by this comment.(İùÎô8ˆöİˆ‘/
+java:S1134"DTake the required action to fix the issue indicated by this comment.(Ã»öµ8Ù·‹ü/
+b
+java:S1134Ø"DTake the required action to fix the issue indicated by this comment.(İùÎô8ˆöİˆ‘/
+`
+java:S1854_">Remove this useless assignment to local variable "isSignedIn".(ğÌñüÿÿÿÿ8îÆ‘/
+Š
+java:S4165a"hRemove this useless assignment; "isSignedIn" already holds the assigned value along all execution paths.(Ÿ ×‹ÿÿÿÿÿ8îÆ‘/

@@ -74,18 +74,22 @@ public class Menu { //may change name to app...
                         log.info("\n\n\nWelcome New customer. Please enter your password");
                         log.info("Or type EXIT to return to the main menu");
                         pw = scan.nextLine();
-                        log.info("For Our Records, please enter your real name");
-                        String name = scan.nextLine();
+
                         if (pw.equals("exit") || pw.equals("EXIT") || pw.equals("Exit") || user.equals("exit") || user.equals("EXIT") || user.equals("Exit")){
                             menuState = 0; //goes back to login menu
                             userLoggedIn = false;
+                            log.info("Returning to Main Menu");
                         }
                         else{
                             try{
+                                log.info("For Our Records, please enter your real name");
+                                String name = scan.nextLine();
                                 Customer customer = businessLayer.signInNewCustomer(scan, user,name, pw);
                                 this.customerMenu(scan, customer);
                             }
                             catch (BusinessException e){
+                                log.info(e.getMessage());
+                                menuState = 0;
                             }
                         }
                         break;
@@ -105,9 +109,7 @@ public class Menu { //may change name to app...
                     default: log.info("Please enter an integer between 1 and 4");
                 } //end switch
 
-        }   //mainmenu should be done.
-        //I AM HERE fixme
-
+        }
     }
     public void customerMenu(Scanner scan, Customer customer) throws BusinessException {
         //goes here when customer is logged in
@@ -142,12 +144,16 @@ public class Menu { //may change name to app...
 //                        bankImp.viewMyAccounts(customer);
 //                        log.warn("this should display all accounts for the user");
                         break;
-//                    case 2:
-//                        //creates a new account and says something about waiting up to 48 hours
-//                        bankImp.applyForAccount(customer);
-//                        log.warn("this should create a new account with pending status");
-//                        //it would be great if users could only have 1 pending account at a time...
-//                        break;
+                    //I AM HERE fixme
+                    case 2:// apply for new account
+                        try{
+                            businessLayer.applyForAccount(customer);
+                            log.info("Account Created. It may take up to 48 hours for the account to be approved.");
+                        }
+                        catch (BusinessException e){
+                            log.info(e.getMessage());
+                        }
+                        break;
 //                    case 3:
 //                        this.customerAccountMenu(scan, customer); //sends to a new menu
 //                        break;

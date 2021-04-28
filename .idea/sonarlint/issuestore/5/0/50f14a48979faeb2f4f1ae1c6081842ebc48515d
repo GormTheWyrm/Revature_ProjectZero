@@ -1,105 +1,139 @@
 
+V	java:S106Ğ"9Replace this use of System.out or System.err by a logger.(û ò¦8Ïäñˆ‘/
+f
+java:S1192E"IDefine a constant instead of duplicating this literal "username" 7 times.(Ÿç«ş8ÿ­Ÿ¥‘/
+Z	java:S106m"9Replace this use of System.out or System.err by a logger.(²„‰Šıÿÿÿÿ8Ì­ªª‘/
+‚
+java:S1149]"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(È›Ùı8©Ù‚©‘/
+[	java:S106È"9Replace this use of System.out or System.err by a logger.(ƒƒú ûÿÿÿÿ8ÿ­Ÿ¥‘/
+[	java:S106«"9Replace this use of System.out or System.err by a logger.(õÔ›õøÿÿÿÿ8ÿ­Ÿ¥‘/
+[	java:S106ê"9Replace this use of System.out or System.err by a logger.(®²ïØúÿÿÿÿ8İñï¨‘/
 g
-java:S1134­"DTake the required action to fix the issue indicated by this comment.(Î×Ğúÿÿÿÿ8Ïäñˆ‘/
-V	java:S106¼"9Replace this use of System.out or System.err by a logger.(Á§öš8ÿÒı†‘/
-k
-java:S1192n"NDefine a constant instead of duplicating this literal "temp function" 7 times.(Á§öš8ÿÒı†‘/
-Z	java:S106a"9Replace this use of System.out or System.err by a logger.(Î×Ğúÿÿÿÿ8„„´†‘/
-V	java:S106¸"9Replace this use of System.out or System.err by a logger.(Á§öš8ÿÒı†‘/
-U	java:S106%"9Replace this use of System.out or System.err by a logger.(Çê8°À´Ö/
-Z	java:S106>"9Replace this use of System.out or System.err by a logger.(ƒƒú ûÿÿÿÿ8«Ê«å/
-Z	java:S106C"9Replace this use of System.out or System.err by a logger.(İò¼ÿÿÿÿÿ8ç—–æ/
+java:S1134¬"DTake the required action to fix the issue indicated by this comment.(Î×Ğúÿÿÿÿ8ÿ­Ÿ¥‘/
+[	java:S106è"9Replace this use of System.out or System.err by a logger.(²„‰Šıÿÿÿÿ8İñï¨‘/
 f
-java:S1134&"DTake the required action to fix the issue indicated by this comment.(“Í¯èøÿÿÿÿ8ŠÕÔ×/
-[	java:S106…"9Replace this use of System.out or System.err by a logger.(ƒÇãˆúÿÿÿÿ8Ş²‰‘/
-‘
-java:S1130›"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(¡Ë—ûÿÿÿÿ8ƒñ™‰‘/
-q
-java:S2095["OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(½¨“Ğúÿÿÿÿ8ÿÒı†‘/
-†
-java:S1192>"dDefine a constant instead of duplicating this literal "Query executed - replace with trace" 4 times.(ƒƒú ûÿÿÿÿ8Ïäñˆ‘/
-V	java:S106Ã"9Replace this use of System.out or System.err by a logger.(Á§öš8ÌÑÜ‰‘/
-Z	java:S106]"9Replace this use of System.out or System.err by a logger.(ƒƒú ûÿÿÿÿ8ÿÒı†‘/
-[	java:S106€"9Replace this use of System.out or System.err by a logger.(Î×Ğúÿÿÿÿ8Ş²‰‘/
-[	java:S106"9Replace this use of System.out or System.err by a logger.(æ€÷­şÿÿÿÿ8Ş²‰‘/
-[	java:S106¬"9Replace this use of System.out or System.err by a logger.(õÔ›õøÿÿÿÿ8Ïäñˆ‘/
-U	java:S106n"9Replace this use of System.out or System.err by a logger.(Á§öš8ÿÒı†‘/
-Z	java:S106f"9Replace this use of System.out or System.err by a logger.(ƒÇãˆúÿÿÿÿ8ŒÖë‡‘/
-Z	java:S106!"9Replace this use of System.out or System.err by a logger.(êĞ†Ëüÿÿÿÿ8°À´Ö/
-k
-java:S1192C"IDefine a constant instead of duplicating this literal "username" 5 times.(İò¼ÿÿÿÿÿ8êÚä‡‘/
-Y	java:S125É"<This block of commented-out lines of code should be removed.(°¡õ8ÿÒı†‘/
-U	java:S106r"9Replace this use of System.out or System.err by a logger.(Á§öš8ÿÒı†‘/
-I
-java:S1172›"&Remove these unused method parameters.(¡Ë—ûÿÿÿÿ8ƒñ™‰‘/
-q
-java:S20958"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÁšÌãûÿÿÿÿ8‰Ùìø/
-f
-java:S1134a"DTake the required action to fix the issue indicated by this comment.(Î×Ğúÿÿÿÿ8æîÕ‡‘/
-™
-java:S1130›"vRemove the declaration of thrown exception 'com.geordin.BusinessException', as it cannot be thrown from method's body.(¡Ë—ûÿÿÿÿ8şîë‰‘/
-[	java:S106°"9Replace this use of System.out or System.err by a logger.(²„‰Šıÿÿÿÿ8Ïäñˆ‘/
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ôº”
-[	java:S106®"9Replace this use of System.out or System.err by a logger.(æ€÷­şÿÿÿÿ8Ïäñˆ‘/
-
-java:S1192X"|Define a constant instead of duplicating this literal "accounts.account_number, accounts.balance, accounts.status " 3 times.(ˆÄ±şùÿÿÿÿ8Ş²‰‘/
-[	java:S106‚"9Replace this use of System.out or System.err by a logger.(áÂœÛÿÿÿÿÿ8Ş²‰‘/
-[	java:S106²"9Replace this use of System.out or System.err by a logger.(ƒÇãˆúÿÿÿÿ8Ïäñˆ‘/
-[	java:S106ª"9Replace this use of System.out or System.err by a logger.(ìúÍşÿÿÿÿ8Ïäñˆ‘/
-q
-java:S1192`"ODefine a constant instead of duplicating this literal "account_number" 3 times.(õÔ›õøÿÿÿÿ8Ş²‰‘/
-V	java:S106±"9Replace this use of System.out or System.err by a logger.(û ò¦8Ïäñˆ‘/
-k
-java:S1192^"IDefine a constant instead of duplicating this literal "RESULTS
-" 3 times.(ìúÍşÿÿÿÿ8Ş²‰‘/
-]	java:S125V"<This block of commented-out lines of code should be removed.(„³³ÿÿÿÿÿ8¿÷†‘/
- 
-java:S1192W"~Define a constant instead of duplicating this literal "select customers.userid, customers.username, customers.name, " 3 times.(¥ö“„ıÿÿÿÿ8Ş²‰‘/
-a
-java:S1134"DTake the required action to fix the issue indicated by this comment.(Û·È–8İÄßä/
-Z	java:S106D"9Replace this use of System.out or System.err by a logger.(áÂœÛÿÿÿÿÿ8«Ê«å/
-Z	java:S106}"9Replace this use of System.out or System.err by a logger.(ìúÍşÿÿÿÿ8Ş²‰‘/
-^	java:S125¡"<This block of commented-out lines of code should be removed.(„³³ÿÿÿÿÿ8Ïäñˆ‘/
-V	java:S106À"9Replace this use of System.out or System.err by a logger.(Á§öš8ÿÒı†‘/
-Z	java:S106^"9Replace this use of System.out or System.err by a logger.(ìúÍşÿÿÿÿ8¡ˆ‘/
-Z	java:S106#"9Replace this use of System.out or System.err by a logger.(Ò«Ñ€ÿÿÿÿÿ8°À´Ö/
-r
-java:S2095¦"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(½¨“Ğúÿÿÿÿ8Ïäñˆ‘/
+java:S1134q"DTake the required action to fix the issue indicated by this comment.(£Ÿ€öÿÿÿÿÿ8€ü°©‘/
 l
-java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(­µøÚ8Ê…åÔ/
-f
-java:S1134T"DTake the required action to fix the issue indicated by this comment.(ó„ÔÈşÿÿÿÿ8Ò—½†‘/
-]	java:S125t"<This block of commented-out lines of code should be removed.(„³³ÿÿÿÿÿ8Ş²‰‘/
-Z	java:S106`"9Replace this use of System.out or System.err by a logger.(õÔ›õøÿÿÿÿ8„„´†‘/
-[	java:S106©"9Replace this use of System.out or System.err by a logger.(ƒƒú ûÿÿÿÿ8Ïäñˆ‘/
-Z	java:S106b"9Replace this use of System.out or System.err by a logger.(æ€÷­şÿÿÿÿ8ûã‡‘/
+java:S1192š"NDefine a constant instead of duplicating this literal "temp function" 7 times.(Á§öš8ÿ­Ÿ¥‘/
+Y	java:S125ƒ"<This block of commented-out lines of code should be removed.(°¡õ8ÿ­Ÿ¥‘/
+]	java:S125S"<This block of commented-out lines of code should be removed.(„³³ÿÿÿÿÿ8Şøœ¨‘/
+[	java:S106É"9Replace this use of System.out or System.err by a logger.(ìúÍşÿÿÿÿ8Ïäñˆ‘/
+[	java:S106’"9Replace this use of System.out or System.err by a logger.(ƒÇãˆúÿÿÿÿ8ŒÖë‡‘/
+n
+java:S1192j"LDefine a constant instead of duplicating this literal " Balance : " 4 times.(Î×Ğúÿÿÿÿ8«Ë‘¨‘/
+”
+java:S1130¼"vRemove the declaration of thrown exception 'com.geordin.BusinessException', as it cannot be thrown from method's body.(«—İ8ªãÙ§‘/
+l
+java:S1192Š"IDefine a constant instead of duplicating this literal "RESULTS
+" 4 times.(ìúÍşÿÿÿÿ8ÿ­Ÿ¥‘/
+[	java:S106Í"9Replace this use of System.out or System.err by a logger.(æ€÷­şÿÿÿÿ8Ïäñˆ‘/
+Z	java:S106i"9Replace this use of System.out or System.err by a logger.(õÔ›õøÿÿÿÿ8Ì­ªª‘/
+[	java:S106‰"9Replace this use of System.out or System.err by a logger.(ƒƒú ûÿÿÿÿ8ÿ­Ÿ¥‘/
+r
+java:S2095‡"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(½¨“Ğúÿÿÿÿ8ÿ­Ÿ¥‘/
+r
+java:S2095Ä"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(½¨“Ğúÿÿÿÿ8ÿ­Ÿ¥‘/
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ôº”
+Z	java:S106o"9Replace this use of System.out or System.err by a logger.(ƒÇãˆúÿÿÿÿ8Ì­ªª‘/
+™
+java:S1130¸"vRemove the declaration of thrown exception 'com.geordin.BusinessException', as it cannot be thrown from method's body.(¡Ë—ûÿÿÿÿ8ÿ­Ÿ¥‘/
 g
-java:S1192e"JDefine a constant instead of duplicating this literal " Status: " 3 times.(û ò¦8Ş²‰‘/
-Z	java:S106d"9Replace this use of System.out or System.err by a logger.(²„‰Šıÿÿÿÿ8Ëûä‡‘/
-Z	java:S106|"9Replace this use of System.out or System.err by a logger.(ƒƒú ûÿÿÿÿ8Ş²‰‘/
-[	java:S106­"9Replace this use of System.out or System.err by a logger.(Î×Ğúÿÿÿÿ8Ïäñˆ‘/
-U	java:S106e"9Replace this use of System.out or System.err by a logger.(û ò¦8¥¦é‡‘/
-]	java:S125A"<This block of commented-out lines of code should be removed.(èáúùÿÿÿÿ8ğÉíå/
-q
-java:S2095y"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(½¨“Ğúÿÿÿÿ8Ş²‰‘/
-V	java:S106„"9Replace this use of System.out or System.err by a logger.(û ò¦8Ş²‰‘/
-¹
-java:S1192Y"œDefine a constant instead of duplicating this literal "from gormbank.customers RIGHT join gormbank.accounts on accounts.userid = customers.userid " 3 times.(óø*8Ş²‰‘/
-V	java:S106œ"9Replace this use of System.out or System.err by a logger.(Á§öš8ƒñ™‰‘/
-[	java:S106¯"9Replace this use of System.out or System.err by a logger.(áÂœÛÿÿÿÿÿ8Ïäñˆ‘/
-j
-java:S1192c"HDefine a constant instead of duplicating this literal " Name: " 3 times.(áÂœÛÿÿÿÿÿ8Ş²‰‘/
-j
-java:S1192b"HDefine a constant instead of duplicating this literal " User: " 6 times.(æ€÷­şÿÿÿÿ8Ïäñˆ‘/
-Z	java:S106c"9Replace this use of System.out or System.err by a logger.(áÂœÛÿÿÿÿÿ8ÿÒı†‘/
+java:S1134å"DTake the required action to fix the issue indicated by this comment.(Î×Ğúÿÿÿÿ8«Ë‘¨‘/
+V	java:S106ı"9Replace this use of System.out or System.err by a logger.(Á§öš8ÿ­Ÿ¥‘/
+V	java:S106š"9Replace this use of System.out or System.err by a logger.(Á§öš8ÿ­Ÿ¥‘/
+W	java:S125`"<This block of commented-out lines of code should be removed.(™™ÊY8°¸ô¨‘/
+[	java:S106¬"9Replace this use of System.out or System.err by a logger.(Î×Ğúÿÿÿÿ8Ş²‰‘/
+[	java:S106Ï"9Replace this use of System.out or System.err by a logger.(²„‰Šıÿÿÿÿ8Ïäñˆ‘/
 g
-java:S1134€"DTake the required action to fix the issue indicated by this comment.(Î×Ğúÿÿÿÿ8Ş²‰‘/
-[	java:S106ƒ"9Replace this use of System.out or System.err by a logger.(²„‰Šıÿÿÿÿ8Ş²‰‘/
+java:S1134"DTake the required action to fix the issue indicated by this comment.(Î×Ğúÿÿÿÿ8ÿ­Ÿ¥‘/
+[	java:S106©"9Replace this use of System.out or System.err by a logger.(ìúÍşÿÿÿÿ8Ş²‰‘/
+^	java:S125¿"<This block of commented-out lines of code should be removed.(„³³ÿÿÿÿÿ8ÿ­Ÿ¥‘/
 m
-java:S1192`"KDefine a constant instead of duplicating this literal " Account: " 3 times.(õÔ›õøÿÿÿÿ8Ş²‰‘/
-d
-java:S1192e"GDefine a constant instead of duplicating this literal "status" 3 times.(û ò¦8Ş²‰‘/
+java:S1192i"KDefine a constant instead of duplicating this literal " Account: " 5 times.(õÔ›õøÿÿÿÿ8ÿ­Ÿ¥‘/
+^	java:S125 "<This block of commented-out lines of code should be removed.(„³³ÿÿÿÿÿ8ÿ­Ÿ¥‘/
+l
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(­µøÚ8Ê…åÔ/
+Z	java:S106k"9Replace this use of System.out or System.err by a logger.(æ€÷­şÿÿÿÿ8Ì­ªª‘/
+[	java:S106Ñ"9Replace this use of System.out or System.err by a logger.(ƒÇãˆúÿÿÿÿ8Ïäñˆ‘/
+e
+java:S1192d"HDefine a constant instead of duplicating this literal "balance" 6 times.(­éŠ‚8Ş²‰‘/
+[	java:S106ä"9Replace this use of System.out or System.err by a logger.(õÔ›õøÿÿÿÿ8İñï¨‘/
+V	java:S106ö"9Replace this use of System.out or System.err by a logger.(Á§öš8ÿ­Ÿ¥‘/
+¹
+java:S1192V"œDefine a constant instead of duplicating this literal "from gormbank.customers RIGHT join gormbank.accounts on accounts.userid = customers.userid " 5 times.(óø*8Ş²‰‘/
+]	java:S125?"<This block of commented-out lines of code should be removed.(èáúùÿÿÿÿ8ÿ­Ÿ¥‘/
+^	java:S125‚"<This block of commented-out lines of code should be removed.(„³³ÿÿÿÿÿ8ÿ­Ÿ¥‘/
+g
+java:S1192n"JDefine a constant instead of duplicating this literal " Status: " 5 times.(û ò¦8ÿ­Ÿ¥‘/
+[	java:S106Ì"9Replace this use of System.out or System.err by a logger.(Î×Ğúÿÿÿÿ8Ïäñˆ‘/
+[	java:S106"9Replace this use of System.out or System.err by a logger.(æ€÷­şÿÿÿÿ8ûã‡‘/
+ 
+java:S1192T"~Define a constant instead of duplicating this literal "select customers.userid, customers.username, customers.name, " 5 times.(¥ö“„ıÿÿÿÿ8ÿ­Ÿ¥‘/
+‘
+java:S1130¸"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(¡Ë—ûÿÿÿÿ8ÿ­Ÿ¥‘/
+^	java:S125ß"<This block of commented-out lines of code should be removed.(µõ†“ÿÿÿÿÿ8Şøœ¨‘/
+Z	java:S106l"9Replace this use of System.out or System.err by a logger.(áÂœÛÿÿÿÿÿ8Ì­ªª‘/
+[	java:S106¯"9Replace this use of System.out or System.err by a logger.(²„‰Šıÿÿÿÿ8Ş²‰‘/
+[	java:S106Š"9Replace this use of System.out or System.err by a logger.(ìúÍşÿÿÿÿ8¡ˆ‘/
+V	java:S106‘"9Replace this use of System.out or System.err by a logger.(û ò¦8¥¦é‡‘/
+k
+java:S1192k"IDefine a constant instead of duplicating this literal " User: " 10 times.(æ€÷­şÿÿÿÿ8Ïäñˆ‘/
+U	java:S106H"9Replace this use of System.out or System.err by a logger.(€°óÅ8¸à²ª‘/
+q
+java:S20958"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÁšÌãûÿÿÿÿ8ÿ­Ÿ¥‘/
+[	java:S106¨"9Replace this use of System.out or System.err by a logger.(ƒƒú ûÿÿÿÿ8ÿ­Ÿ¥‘/
+q
+java:S2095X"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(½¨“Ğúÿÿÿÿ8Şøœ¨‘/
 j
-java:S1192a"HDefine a constant instead of duplicating this literal "balance" 3 times.(Î×Ğúÿÿÿÿ8Ş²‰‘/
-Z	java:S106E"9Replace this use of System.out or System.err by a logger.(£‡åÂüÿÿÿÿ8«Ê«å/
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(õÔ›õøÿÿÿÿ8Ş²‰‘/
+java:S1192l"HDefine a constant instead of duplicating this literal " Name: " 5 times.(áÂœÛÿÿÿÿÿ8Ş²‰‘/
+
+java:S1192U"|Define a constant instead of duplicating this literal "accounts.account_number, accounts.balance, accounts.status " 5 times.(ˆÄ±şùÿÿÿÿ8Ş²‰‘/
+[	java:S106®"9Replace this use of System.out or System.err by a logger.(áÂœÛÿÿÿÿÿ8Ş²‰‘/
+[	java:S106á"9Replace this use of System.out or System.err by a logger.(ƒƒú ûÿÿÿÿ8«Ë‘¨‘/
+i
+java:S1192f"GDefine a constant instead of duplicating this literal "status" 6 times.(”ñı¯üÿÿÿÿ8ÿ­Ÿ¥‘/
+a
+java:S1134 "DTake the required action to fix the issue indicated by this comment.(Û·È–8İÄßä/
+Z	java:S106\"9Replace this use of System.out or System.err by a logger.(ƒƒú ûÿÿÿÿ8Şøœ¨‘/
+^	java:S125Ø"<This block of commented-out lines of code should be removed.(„³³ÿÿÿÿÿ8«Ë‘¨‘/
+l
+java:S1192c"ODefine a constant instead of duplicating this literal "account_number" 6 times.(¹¨ÇÖ8ÿ­Ÿ¥‘/
+f
+java:S1134("DTake the required action to fix the issue indicated by this comment.(“Í¯èøÿÿÿÿ8ŠÕÔ×/
+f
+java:S1134j"DTake the required action to fix the issue indicated by this comment.(Î×Ğúÿÿÿÿ8Şøœ¨‘/
+[	java:S106"9Replace this use of System.out or System.err by a logger.(²„‰Šıÿÿÿÿ8Ëûä‡‘/
+†
+java:S1192="dDefine a constant instead of duplicating this literal "Query executed - replace with trace" 6 times.(ƒƒú ûÿÿÿÿ8ÿ­Ÿ¥‘/
+V	java:S106¹"9Replace this use of System.out or System.err by a logger.(Á§öš8ÿ­Ÿ¥‘/
+g
+java:S1134Ì"DTake the required action to fix the issue indicated by this comment.(Î×Ğúÿÿÿÿ8ÿ­Ÿ¥‘/
+Z	java:S106h"9Replace this use of System.out or System.err by a logger.(Ôãåûÿÿÿÿ8õòªª‘/
+[	java:S106Œ"9Replace this use of System.out or System.err by a logger.(õÔ›õøÿÿÿÿ8ÿ­Ÿ¥‘/
+Z	java:S106j"9Replace this use of System.out or System.err by a logger.(Î×Ğúÿÿÿÿ8Ì­ªª‘/
+g
+java:S1134€"DTake the required action to fix the issue indicated by this comment.(ó„ÔÈşÿÿÿÿ8ÿ­Ÿ¥‘/
+r
+java:S2095İ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(½¨“Ğúÿÿÿÿ8«Ë‘¨‘/
+V	java:S106"9Replace this use of System.out or System.err by a logger.(Á§öš8ÿ­Ÿ¥‘/
+[	java:S106å"9Replace this use of System.out or System.err by a logger.(Î×Ğúÿÿÿÿ8İñï¨‘/
+V	java:S106ò"9Replace this use of System.out or System.err by a logger.(Á§öš8ÿ­Ÿ¥‘/
+[	java:S106â"9Replace this use of System.out or System.err by a logger.(ìúÍşÿÿÿÿ8«Ë‘¨‘/
+r
+java:S2095¥"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(½¨“Ğúÿÿÿÿ8ÿ­Ÿ¥‘/
+V	java:S106ú"9Replace this use of System.out or System.err by a logger.(Á§öš8ÿ­Ÿ¥‘/
+[	java:S106ç"9Replace this use of System.out or System.err by a logger.(áÂœÛÿÿÿÿÿ8İñï¨‘/
+[	java:S106"9Replace this use of System.out or System.err by a logger.(Î×Ğúÿÿÿÿ8„„´†‘/
+]	java:S125Z"<This block of commented-out lines of code should be removed.(µõ†“ÿÿÿÿÿ8Şøœ¨‘/
+[	java:S106Ë"9Replace this use of System.out or System.err by a logger.(õÔ›õøÿÿÿÿ8ÿ­Ÿ¥‘/
+V	java:S106°"9Replace this use of System.out or System.err by a logger.(û ò¦8Ş²‰‘/
+[	java:S106æ"9Replace this use of System.out or System.err by a logger.(æ€÷­şÿÿÿÿ8İñï¨‘/
+[	java:S106Î"9Replace this use of System.out or System.err by a logger.(áÂœÛÿÿÿÿÿ8Ïäñˆ‘/
+Z	java:S106="9Replace this use of System.out or System.err by a logger.(ƒƒú ûÿÿÿÿ8ÿ­Ÿ¥‘/
+U	java:S106n"9Replace this use of System.out or System.err by a logger.(û ò¦8Ì­ªª‘/
+[	java:S106"9Replace this use of System.out or System.err by a logger.(áÂœÛÿÿÿÿÿ8ÿÒı†‘/
+V	java:S106é"9Replace this use of System.out or System.err by a logger.(û ò¦8İñï¨‘/
+I
+java:S1172¸"&Remove these unused method parameters.(¡Ë—ûÿÿÿÿ8ÿ­Ÿ¥‘/
+[	java:S106­"9Replace this use of System.out or System.err by a logger.(æ€÷­şÿÿÿÿ8Ş²‰‘/
+[	java:S106±"9Replace this use of System.out or System.err by a logger.(ƒÇãˆúÿÿÿÿ8Ş²‰‘/
