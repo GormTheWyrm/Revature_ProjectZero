@@ -1,14 +1,23 @@
 
 ‚
-java:S1149:"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(È›Ùı8¾Õ©‘/
-f
-java:S1134 "DTake the required action to fix the issue indicated by this comment.(íéúùşÿÿÿÿ8Úøá¥‘/
+java:S1149T"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(›8øÇÑ¶‘/
+M
+java:S1172$"+Remove this unused method parameter "scan".(íéúùşÿÿÿÿ8ÖÎ¥‘/
+t
+java:S1192D"RDefine a constant instead of duplicating this literal "No accounts found" 3 times.(Úï¹˜şÿÿÿÿ8Ùàğ¼‘/
 ‚
-java:S11499"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(š¾Îİ8éÔ´©‘/
+java:S1149U"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(È›Ùı8øÇÑ¶‘/
+a
+java:S1134W"DTake the required action to fix the issue indicated by this comment.(Õÿ“ú8—®á¶‘/
+]
+java:S11266"AReplace this if-then-else statement by a single return statement.(É•İG8Âº¾¦‘/
+‚
+java:S1149="eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(È›Ùı8¾Õ©‘/
+f
+java:S1134$"DTake the required action to fix the issue indicated by this comment.(íéúùşÿÿÿÿ8Úøá¥‘/
+‚
+java:S1149<"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(š¾Îİ8éÔ´©‘/
+f
+java:S11341"DTake the required action to fix the issue indicated by this comment.(§ğÒüÿÿÿÿ8¥¿÷¯‘/
 M
 java:S1172"+Remove this unused method parameter "scan".(êÂ÷üÿÿÿÿ8ßÎö¤‘/
-]
-java:S11263"AReplace this if-then-else statement by a single return statement.(É•İG8Âº¾¦‘/
-M
-java:S1172 "+Remove this unused method parameter "scan".(íéúùşÿÿÿÿ8ÖÎ¥‘/
-X	java:S125*"<This block of commented-out lines of code should be removed.(ò½é8Î¥­‘/

@@ -1,28 +1,36 @@
 
-D	java:S108B")Either remove or fill this block of code.(ÔÌß8¸åª‘/
-f
-java:S1134`"DTake the required action to fix the issue indicated by this comment.(ÙÈóÉùÿÿÿÿ8¸åª‘/
-Š
-java:S11921"hDefine a constant instead of duplicating this literal "Or type EXIT to return to the main menu" 5 times.(™€öåÿÿÿÿÿ8Œ÷É¥‘/
-t
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 27 to the 15 allowed.(å¬³§ıÿÿÿÿ8Œ÷É¥‘/
-g
-java:S1134„"DTake the required action to fix the issue indicated by this comment.(ç–‚Ùùÿÿÿÿ8¨•¬‘/
-J
-java:S1125c"(Remove the literal "true" boolean value.(ÀñäÇÿÿÿÿÿ8¸åª‘/
-f
-java:S1134u"DTake the required action to fix the issue indicated by this comment.(ÃÃŞ¸ùÿÿÿÿ8¸åª‘/
-p	java:S100¨"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦ÇÂ£üÿÿÿÿ8¸åª‘/
-D	java:S108X")Either remove or fill this block of code.(ÔÌß8¸åª‘/
-k	java:S100«"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä¨Îñ8¸åª‘/
-Z
-java:S1854…"<Remove this useless assignment to local variable "accounts".(È›Ùı8˜“”¬‘/
-Y	java:S125"<This block of commented-out lines of code should be removed.(¼¼…ª8¸åª‘/
 ƒ
-java:S1149…"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(È›Ùı8¸åª‘/
-a
-java:S1134~"DTake the required action to fix the issue indicated by this comment.(Ÿ¥§Ç8¸åª‘/
-Y	java:S125“"<This block of commented-out lines of code should be removed.(ÿÍÊÂ8¸åª‘/
-X	java:S125a"<This block of commented-out lines of code should be removed.(¬¶ğÑ8¸åª‘/
+java:S1149¾"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(È›Ùı8˜Ûº¼‘/
+Š
+java:S11921"hDefine a constant instead of duplicating this literal "Or type EXIT to return to the main menu" 5 times.(™€öåÿÿÿÿÿ8˜Ûº¼‘/
+g
+java:S1134‚"DTake the required action to fix the issue indicated by this comment.(ç–‚Ùùÿÿÿÿ8˜Ûº¼‘/
+Z
+java:S1854ƒ"<Remove this useless assignment to local variable "accounts".(È›Ùı8˜Ûº¼‘/
+Y	java:S125Ê"<This block of commented-out lines of code should be removed.(ğÒ­8˜Ûº¼‘/
+Y	java:S125ê"<This block of commented-out lines of code should be removed.(çÃƒ×8˜Ûº¼‘/
+ƒ
+java:S1149ƒ"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(È›Ùı8˜Ûº¼‘/
+^	java:S125ğ"<This block of commented-out lines of code should be removed.(ß‰ö³ÿÿÿÿÿ8˜Ûº¼‘/
+k	java:S100ª"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä¨Îñ8˜Ûº¼‘/
+t
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 27 to the 15 allowed.(å¬³§ıÿÿÿÿ8˜Ûº¼‘/
 f
-java:S1134m"DTake the required action to fix the issue indicated by this comment.(ı€´ùûÿÿÿÿ8¸åª‘/
+java:S1134|"DTake the required action to fix the issue indicated by this comment.(œÎ¹“şÿÿÿÿ8˜Ûº¼‘/
+Y	java:S125Œ"<This block of commented-out lines of code should be removed.(¼¼…ª8˜Ûº¼‘/
+^	java:S125Ğ"<This block of commented-out lines of code should be removed.(ïúò¡ÿÿÿÿÿ8˜Ûº¼‘/
+J
+java:S1125e"(Remove the literal "true" boolean value.(ÀñäÇÿÿÿÿÿ8˜Ûº¼‘/
+g
+java:S1134Õ"DTake the required action to fix the issue indicated by this comment.(¨ÇÆ¸ûÿÿÿÿ8˜Ûº¼‘/
+p
+java:S1192("NDefine a constant instead of duplicating this literal "Invalid entry" 3 times.(Ñı÷úÿÿÿÿ8˜Ûº¼‘/
+D	java:S108A")Either remove or fill this block of code.(ÔÌß8˜Ûº¼‘/
+^	java:S125á"<This block of commented-out lines of code should be removed.(¬Ç‹ûÿÿÿÿ8˜Ûº¼‘/
+:
+java:S1116Á"Remove this empty statement.(ô·¥¥8˜Ûº¼‘/
+Y	java:S125è"<This block of commented-out lines of code should be removed.(é÷×Œ8˜Ûº¼‘/
+n	java:S128¡"LEnd this switch case with an unconditional break, return or throw statement.(®Ó ·şÿÿÿÿ8˜Ûº¼‘/
+Y	java:S125ã"<This block of commented-out lines of code should be removed.(çÃƒ×8˜Ûº¼‘/
+b
+java:S1134¸"DTake the required action to fix the issue indicated by this comment.(­ˆİ‘8˜Ûº¼‘/

@@ -1,6 +1,9 @@
 
 a
-java:S1134"DTake the required action to fix the issue indicated by this comment.(×ø¤õ8Îž¡¨‘/
-X	java:S1253"<This block of commented-out lines of code should be removed.(¡ôÉ¬8ÿüÌˆ‘/
+java:S1134"DTake the required action to fix the issue indicated by this comment.(µÉå8–¯Ä¼‘/
+X	java:S125"<This block of commented-out lines of code should be removed.(¡ôÉ¬8ÿüÌˆ‘/
+‚
+java:S1149"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(²§õ½8‡äé»‘/
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ü¿Ä“øÿÿÿÿ
-]	java:S125$"<This block of commented-out lines of code should be removed.(Å¿ð€ýÿÿÿÿ8ÿüÌˆ‘/
+f
+java:S1134"DTake the required action to fix the issue indicated by this comment.(ÆÉ§ìøÿÿÿÿ8–¯Ä¼‘/
