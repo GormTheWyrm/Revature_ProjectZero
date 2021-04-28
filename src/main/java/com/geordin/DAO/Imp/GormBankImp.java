@@ -142,6 +142,27 @@ public class GormBankImp implements GormBankDao {
 
     }
 
+    public Vector<Account> viewPendingApplications() throws SQLException, BusinessException { //fixme wrong method, but useful for getMyAccounts and getaccbyuser...
+        Connection connection = PostgresConnection.getConnection();
+        String sql = "select customers.userid, customers.username, customers.name, " +
+                "accounts.account_number, accounts.balance, accounts.status " +
+                "from gormbank.customers RIGHT join gormbank.accounts on accounts.userid = customers.userid " +
+                "WHERE status = 'pending';";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+log.trace("DAO viewPendingApplications");
+        Vector<Account> accounts = new Vector<>();
+        while (resultSet.next()) {
+            Account account = new Account();
+            account.setAccountNumber(resultSet.getLong("account_number"));
+            account.setBalance(resultSet.getDouble("balance"));
+            account.setUsername(resultSet.getString("username"));
+            account.setStatus(resultSet.getString("status"));
+            accounts.add(account);
+        }
+        return accounts;
+    }
+
     public void applyForAccount(Customer customer) throws SQLException, BusinessException { //fixme current
         Connection connection = PostgresConnection.getConnection();
         String sql="INSERT INTO gormbank.accounts (balance, status, userid) VALUES(0, 'pending', " +

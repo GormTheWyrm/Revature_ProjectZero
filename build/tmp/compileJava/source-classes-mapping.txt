@@ -1,13 +1,13 @@
 com/geordin/BusinessException.java
  com.geordin.BusinessException
-com/geordin/model/Customer.java
- com.geordin.model.Customer
-com/geordin/model/User.java
- com.geordin.model.User
+com/geordin/business/BusinessLayer.java
+ com.geordin.business.BusinessLayer
+com/geordin/DAO/Imp/GormBankImp.java
+ com.geordin.DAO.Imp.GormBankImp
 com/geordin/model/Employee.java
  com.geordin.model.Employee
-com/geordin/model/Account.java
- com.geordin.model.Account
+com/geordin/BankApp.java
+ com.geordin.BankApp
 com/geordin/DAO/GormBankDao.java
  com.geordin.DAO.GormBankDao
 com/geordin/model/Transaction.java
@@ -16,11 +16,11 @@ com/geordin/bdutil/PostgresConnection.java
  com.geordin.bdutil.PostgresConnection
 com/geordin/DAO/EmployeeDao.java
  com.geordin.DAO.EmployeeDao
+com/geordin/model/Account.java
+ com.geordin.model.Account
+com/geordin/model/User.java
+ com.geordin.model.User
+com/geordin/model/Customer.java
+ com.geordin.model.Customer
 com/geordin/frontend/Menu.java
  com.geordin.frontend.Menu
-com/geordin/business/BusinessLayer.java
- com.geordin.business.BusinessLayer
-com/geordin/DAO/Imp/GormBankImp.java
- com.geordin.DAO.Imp.GormBankImp
-com/geordin/BankApp.java
- com.geordin.BankApp

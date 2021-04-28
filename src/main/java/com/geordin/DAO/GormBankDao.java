@@ -6,6 +6,7 @@ import com.geordin.model.Customer;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Vector;
 
 public interface GormBankDao {
 
@@ -27,7 +28,7 @@ public interface GormBankDao {
 //currently testing
 public List<Account> findAccountsByUsername(String username) throws SQLException, BusinessException;   //used by employee to view customers... without getting pw
     //replacing viewAccountsByUsername  fixme currently working on this!
-
+    public Vector<Account> viewPendingApplications() throws SQLException, BusinessException;
     public void viewAccountsByAccountNum(long accountNum) throws SQLException, BusinessException;   //used by ...
         // did not sout anything
     //not built
@@ -57,27 +58,5 @@ public void viewMyAccounts(Customer customer)throws SQLException, BusinessExcept
 
 
 
-
-
-
-    //NOTES
-    //"as a user, I can login", does that mean employees must login too?
-    //input customer or employee objects -user object?) to ensure that the correct person is logged in!
-    //need to deal with negative balances
-    //!!need to implement viewing pending transfers from other accounts... and accepting them...stretch goal?
-    //...do I need a findCustomer method?
-
-    //see applications  -   select * from account where status = 'pending'; - accountDAO
-    //viewAccountsByUsername - customerDao?
-
-//need to get a delete function to prove my CRUD
-    /*
-    currently:
-        users can sign up for an account
-        ...
-        Users can log in to an account
-        ...
-
-     */
 
 }

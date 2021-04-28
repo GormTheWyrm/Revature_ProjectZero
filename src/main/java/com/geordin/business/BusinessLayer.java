@@ -81,6 +81,22 @@ public class BusinessLayer {
             throw new BusinessException("An error occurred. Account not created");
         }
     }
+    public Vector<Account> viewPendingApplications() throws BusinessException {  //works, but am not revalidating pw
+        Vector<Account> accounts = new Vector<>();
+        try{
+            accounts = bankImp.viewPendingApplications(); //fixme working
+            log.trace("Business Layer,viewPendingAccounts: " + accounts); //this is not for the user - displays but ugly
+            return accounts;
+        }
+        catch (BusinessException e){
+            throw new BusinessException("No accounts found");
+        }
+        catch (SQLException e){
+//            log.trace(e.getMessage()); //this remains commented because it might break code... but it seems important
+            throw new BusinessException("Database Error, please inform IT department");
+        }
+
+    }//ued by employee to see all accounts of status "pending"
 
     }
 

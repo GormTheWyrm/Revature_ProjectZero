@@ -55,7 +55,7 @@ public class Account {
     }
     @Override
     public String toString(){
-        return ("Account Number: "+ this.accountNumber + " Balance: "+ this.balance + " Username: " + this.username); //may need to change this to userid?
+        return ("Account Number: "+ this.accountNumber + " Balance: "+ this.balance + " Username: " + this.username + " Status: " + this.status); //may need to change this to userid?
     } //switch to getters!
     @Override
     public boolean equals(Object o) { //for now, just comparing usernames should suffice

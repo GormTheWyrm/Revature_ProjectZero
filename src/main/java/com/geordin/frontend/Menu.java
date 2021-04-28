@@ -4,7 +4,6 @@ import com.geordin.BusinessException;
 import com.geordin.business.BusinessLayer;
 import com.geordin.model.Account;
 import com.geordin.model.Customer;
-import com.geordin.model.Employee;
 import org.apache.log4j.Logger;
 
 import java.util.Scanner;
@@ -98,8 +97,7 @@ public class Menu { //may change name to app...
                         log.info("Or type EXIT to return to the main menu");
                         pw = scan.nextLine();
                         userLoggedIn = businessLayer.signInEmployee(pw);   //fixme
-//                    this.employeeMenu(scan);
-//                        this.signInEmployee(scan); //hardcoded employee for now
+                            log.trace("employeeLoggedIn - Menu: "+ userLoggedIn);
                         if (userLoggedIn == true){
                             this.EmployeeMenu(scan);
                         }
@@ -152,14 +150,17 @@ public class Menu { //may change name to app...
                         }
                         catch (BusinessException e){
                             log.info(e.getMessage());
+                            menuState = 0;
                         }
                         break;
-//                    case 3:
+//                    case 3: //withdrawal
 //                        this.customerAccountMenu(scan, customer); //sends to a new menu
 //                        break;
-//                    case 4:
-//                        log.info("returning to main menu...");
-//                        this.mainMenu(scan);
+//                    case 4: //deposit
+
+//                        break;
+//                    case 5: //transfer
+
 //                        break;
                     default:
                         log.info("Please enter an integer between 1 and 6");
@@ -171,15 +172,94 @@ public class Menu { //may change name to app...
 
 
     }
-    public void EmployeeMenu(Scanner scan, Employee employee){
+
+    public void EmployeeMenu(Scanner scan) { //fixme just started on this
         //goes here when Employee is logged in
-    }//empty method for when employee login connected to DB
-    public void EmployeeMenu(Scanner scan){
-        //goes here when Employee is logged in
-    } //hardcoded version of this function
-    private void quitApp(Scanner scan){  //return employee
-        //this should quit the app...
-//        return employee
+        int menuState = 0;
+        BusinessLayer businessLayer = new BusinessLayer(); //there is probably a better way to do this than creating one for each menu...
+        while (menuState != 10) {
+            log.info("\n\n\nSigned in as employee");
+            try {
+                log.info("Employee Menu. Please select an option\n1. See all pending applications\n2. Search Accounts By Username");
+                log.info("3. Search Account by Account Number\n4. Approve Account By Account Number\n5. Deny Account by Account Number");
+                log.info("6. View Logs by Account\n7. View Logs By User\n8. View Logs by Date\n9. View All Logs\n10. Return to Main Menu");
+                menuState = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                log.info("Invalid entry");
+                menuState = 0;
+            }
+//fixme need all options! cases not set yet
+            switch (menuState) {
+                case 0: //catch exceptions
+                    log.info("please enter an integer between 1 and 10"); //redirected by catch block
+                    break;
+                case 1: //see all pending accounts
+                    Vector<Account> accounts = new Vector<>();
+                    try {
+                        accounts = businessLayer.viewPendingApplications();
+                        ; //seems to work!
+                        accounts.forEach(acc -> log.info(acc.toString())); //SUCCESS!! displays each account
+                    } catch (BusinessException e) {
+                        log.info(e.getMessage());
+                        menuState = 0;
+                    }
+
+//                    bankDao.viewAllApplications(); //displays pending applications
+                    break;
+                case 2:
+//                    log.info("Search By Username; Please enter Username.");
+//                    username = scan.nextLine();
+//                    bankDao.viewAccountsByUsername(username);//displays accounts that match query username
+                    break;
+                case 3:
+//                    log.info("Search By Account Number; Please enter Account Number.");
+//                    accountNumber = Long.parseLong(scan.nextLine());
+//                    bankDao.viewAccountsByAccountNum(accountNumber);//displays accounts that match query username
+                    break;
+                case 4:
+//                    log.info("Please Enter Account To Approve.");
+//                    accountNumber = Long.parseLong(scan.nextLine());
+//                    //must catch arithmetic exception
+//                    //approveAccountByAccountNumber
+                    break;
+                case 5:
+//                    log.info("Please Enter Account To Deny.");
+//                    accountNumber = Long.parseLong(scan.nextLine());
+//                    //must catch arithmetic exception
+//                    // denyAccountByAccountNumber
+                    break;
+                case 6:
+//                    log.info("Please Enter Account To View Logs.");
+//                    accountNumber = Long.parseLong(scan.nextLine());
+                    //must catch arithmetic exception
+                    //viewLogsByAccountNumber
+                    break;
+                case 7:
+//                    log.info("Please Enter User To View Logs.");
+//                    username = scan.nextLine();
+                    //viewLogsByUser
+                    break;
+                case 8:
+                    log.warn("View By Date Not Implemented");
+                    //viewLogsByDate
+//                String date = Long.parseLong(scan.nextLine()); //what type to use for date?String?
+                    break;
+                case 9: //viewAllLogs
+                    log.warn("view all longs not yet implemented");
+                    break;
+                case 10:
+                    log.info("Returning to Main Menu");
+                    break;
+
+                default:
+                    log.info("Please enter an integer between 1 and 10");
+            }
+        }
+    }
+
+
+
+    private void quitApp(Scanner scan){  //exits application
         log.info("Exiting Application");
         scan.close();
         System.exit(0);
