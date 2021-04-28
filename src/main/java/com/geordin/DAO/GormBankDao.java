@@ -14,8 +14,10 @@ public interface GormBankDao {
     Customer createNewCustomer(String username, String name, String password) throws SQLException, BusinessException;
     void applyForAccount(Customer customer) throws SQLException, BusinessException; //create account,set status to pending
     Customer findCustomerByLogin(String username, String pw) throws SQLException, BusinessException; //returns customer object when logging in with user and pw
-    List<Account> findAccountsByUsername(String username) throws SQLException, BusinessException;   //used by employee to view customers... without getting pw
+    List<Account> findAccountsByUsername(String username) throws SQLException, BusinessException;   //used by employee to view customers... without getting pw fixme
     Vector<Account> viewPendingApplications() throws SQLException, BusinessException;
+
+    public void approveAccount(Long accountNum) throws SQLException, BusinessException; //fixme ; next step
 
     public void viewAccountsByUsername(String username) throws SQLException, BusinessException;   //used by employee to view customers... without getting pw
     public void viewAccountsByAccountNum(long accountNum) throws SQLException, BusinessException;   //used by ...

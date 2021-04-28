@@ -96,7 +96,17 @@ public class BusinessLayer {
             throw new BusinessException("Database Error, please inform IT department");
         }
 
-    }//ued by employee to see all accounts of status "pending"
+    }//used by employee to see all accounts of status "pending"
+    public void approveApplication(Long accountNum) throws BusinessException {
+        try{
+            bankImp.approveAccount(accountNum);
+        }
+        catch (SQLException | BusinessException e){
+            throw new BusinessException("No accounts found");
+        }
+
+
+    }
 
     }
 

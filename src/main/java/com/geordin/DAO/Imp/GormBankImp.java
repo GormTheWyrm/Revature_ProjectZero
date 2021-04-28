@@ -100,7 +100,7 @@ public class GormBankImp implements GormBankDao {
         return accounts;
     }
 
-    public Vector<Account> viewPendingApplications() throws SQLException, BusinessException { //fixme wrong method, but useful for getMyAccounts and getaccbyuser...
+    public Vector<Account> viewPendingApplications() throws SQLException, BusinessException {
         Connection connection = PostgresConnection.getConnection();
         String sql = "select customers.userid, customers.username, customers.name, " +
                 "accounts.account_number, accounts.balance, accounts.status " +
@@ -159,14 +159,12 @@ log.trace("DAO viewPendingApplications");
     public void viewAccountsByUsername(String username) throws SQLException, BusinessException {   //used by employee and customer to view employees...
         //fixme
         Connection connection = PostgresConnection.getConnection();
-//        String sql = "SELECT * from gormbank.accounts;";
         String sql = "select customers.userid, customers.username, customers.name, " +
                 "accounts.account_number, accounts.balance, accounts.status " +
                 "from gormbank.customers RIGHT join gormbank.accounts on accounts.userid = customers.userid " +
                 "WHERE username = ?;";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, username);    //variables sent into sql/preparedStatement
-//        preparedStatement.setString(2, password);
         ResultSet resultSet = preparedStatement.executeQuery();
         System.out.println("Query executed - replace with trace");
         System.out.println("RESULTS\n");
@@ -192,7 +190,17 @@ log.trace("DAO viewPendingApplications");
     public void transferFunds(Customer customer, long accountNum, long accountNum2, double amount) throws SQLException, BusinessException {
         System.out.println("temp function");
     }
-
+public void approveAccount(Long accountNum) throws SQLException, BusinessException{
+        //fixme next step - might work,
+    Connection connection = PostgresConnection.getConnection();
+    String sql = "update gormbank.accounts set balance = 25, status ='active' " +
+            "where account_number = ?;";
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    preparedStatement.setLong(1, accountNum);    //variables sent into sql/preparedStatement
+    int executeUpdate=preparedStatement.executeUpdate(); //need to actually run the sql...
+    //I think I'm missing a step where I test results
+    log.trace("updated " + executeUpdate);
+}//still need to test to make sure this does not reset balance if applied to wrong account
 //TRANSACTIONS
 
 //        public void viewAllLogs () throws SQLException, BusinessException {}

@@ -6,6 +6,7 @@ import com.geordin.model.Account;
 import com.geordin.model.Customer;
 import org.apache.log4j.Logger;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -209,11 +210,16 @@ public class Menu { //may change name to app...
 //                    bankDao.viewAccountsByAccountNum(accountNumber);//displays accounts that match query username
                     break;
                 case 4: //approve account by number
-                    log.info("Approve By Account Number not yet implemented"); //fixme next method to implement!
-//                    log.info("Please Enter Account To Approve.");
-//                    accountNumber = Long.parseLong(scan.nextLine());
-//                    //must catch arithmetic exception
-//                    //approveAccountByAccountNumber
+                    log.info("Type in Account number to approve application"); //fixme next method to implement!
+                    Long accountNum = Long.parseLong(scan.nextLine());
+                    try{
+                        businessLayer.approveApplication(accountNum);
+                    }
+                    catch (BusinessException e){
+                        e.getMessage();
+                        menuState = 0;
+                    }
+
                     break;
                 case 5: //deny account by number
 //                    log.info("Please Enter Account To Deny.");
