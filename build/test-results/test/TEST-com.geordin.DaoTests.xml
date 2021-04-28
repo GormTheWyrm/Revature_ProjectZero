@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.geordin.DaoTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-04-28T07:50:12" hostname="ORNHEIM" time="0.135">
+  <properties/>
+  <testcase name="testCustomerLoginUser()" classname="com.geordin.DaoTests" time="0.128"/>
+  <testcase name="testCustomerLoginException()" classname="com.geordin.DaoTests" time="0.003"/>
+  <testcase name="testCustomerLoginPW()" classname="com.geordin.DaoTests" time="0.002"/>
+  <system-out><![CDATA[DAO-findCustomerByLogin
+DAO loginOldCustomer: Tim
+DAO-findCustomerByLogin
+DAO-findCustomerByLogin
+DAO loginOldCustomer: Tim
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

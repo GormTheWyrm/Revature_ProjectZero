@@ -14,13 +14,11 @@ com/geordin/model/Transaction.java
  com.geordin.model.Transaction
 com/geordin/bdutil/PostgresConnection.java
  com.geordin.bdutil.PostgresConnection
-com/geordin/DAO/EmployeeDao.java
- com.geordin.DAO.EmployeeDao
+com/geordin/frontend/Menu.java
+ com.geordin.frontend.Menu
 com/geordin/model/Account.java
  com.geordin.model.Account
 com/geordin/model/User.java
  com.geordin.model.User
 com/geordin/model/Customer.java
  com.geordin.model.Customer
-com/geordin/frontend/Menu.java
- com.geordin.frontend.Menu

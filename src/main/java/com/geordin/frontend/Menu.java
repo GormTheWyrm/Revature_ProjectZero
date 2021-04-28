@@ -60,7 +60,6 @@ public class Menu { //may change name to app...
                                 log.info("Redirecting to Customer Menu: "+ customer.getUsername());
                                 log.trace(businessLayer.signInOldCustomer(scan, user, pw));
                                 this.customerMenu(scan, customer);
-
                             }
                             catch (BusinessException e){
                             }
@@ -96,7 +95,7 @@ public class Menu { //may change name to app...
                         log.info("\n\n\nWelcome Employee. Please enter your password");
                         log.info("Or type EXIT to return to the main menu");
                         pw = scan.nextLine();
-                        userLoggedIn = businessLayer.signInEmployee(pw);   //fixme
+                        userLoggedIn = businessLayer.signInEmployee(pw);
                             log.trace("employeeLoggedIn - Menu: "+ userLoggedIn);
                         if (userLoggedIn == true){
                             this.EmployeeMenu(scan);
@@ -106,15 +105,13 @@ public class Menu { //may change name to app...
                         break;
                     default: log.info("Please enter an integer between 1 and 4");
                 } //end switch
-
         }
     }
     public void customerMenu(Scanner scan, Customer customer) throws BusinessException {
-        //goes here when customer is logged in
         int menuState = 0;
         BusinessLayer businessLayer = new BusinessLayer(); //there is probably a better way to do this than creating one for each menu...
         while (menuState != 6){
-            log.info("\n\n\nSigned in as "+customer.getUsername()); //fixme showing up null...
+            log.info("\n\n\nSigned in as "+customer.getUsername());
             try {
                 log.info("Customer Menu. Please select an option");
                 log.info("1. See My Accounts \n2. Apply For New Account \n3. Make A Withdrawal\n4. Make A Deposit\n5. Transfer Money\n6. Return to Main Menu");
@@ -123,7 +120,7 @@ public class Menu { //may change name to app...
                 log.info("Invalid entry");
                 menuState = 0;
             }
-//fixme need all options! cases not set yet
+            //fixme; finish implementing cases
                 switch (menuState) {
                     case 0:
                         log.info("please enter an integer between 1 and 6"); //redirected by catch block
@@ -142,7 +139,6 @@ public class Menu { //may change name to app...
 //                        bankImp.viewMyAccounts(customer);
 //                        log.warn("this should display all accounts for the user");
                         break;
-                    //I AM HERE fixme
                     case 2:// apply for new account
                         try{
                             businessLayer.applyForAccount(customer);
@@ -153,28 +149,24 @@ public class Menu { //may change name to app...
                             menuState = 0;
                         }
                         break;
-//                    case 3: //withdrawal
-//                        this.customerAccountMenu(scan, customer); //sends to a new menu
-//                        break;
-//                    case 4: //deposit
-
-//                        break;
-//                    case 5: //transfer
-
-//                        break;
+                    case 3: //withdrawal
+                        log.info("Withdrawal method not yet implemented");
+                        break;
+                    case 4: //deposit
+                    log.info("Deposit method not yet implemented");
+                        break;
+                    case 5: //transfer
+                        break;
+                    case 6: //returning to main menu
+                        log.info("Returning to main menu");
                     default:
                         log.info("Please enter an integer between 1 and 6");
                 }
 
-        }//currently broken , not fixed yet
-
-
-
-
+        }
     }
 
-    public void EmployeeMenu(Scanner scan) { //fixme just started on this
-        //goes here when Employee is logged in
+    public void EmployeeMenu(Scanner scan) {
         int menuState = 0;
         BusinessLayer businessLayer = new BusinessLayer(); //there is probably a better way to do this than creating one for each menu...
         while (menuState != 10) {
@@ -188,7 +180,7 @@ public class Menu { //may change name to app...
                 log.info("Invalid entry");
                 menuState = 0;
             }
-//fixme need all options! cases not set yet
+            //fixme; not all cases implemented
             switch (menuState) {
                 case 0: //catch exceptions
                     log.info("please enter an integer between 1 and 10"); //redirected by catch block
@@ -203,49 +195,53 @@ public class Menu { //may change name to app...
                         log.info(e.getMessage());
                         menuState = 0;
                     }
-
-//                    bankDao.viewAllApplications(); //displays pending applications
                     break;
-                case 2:
+                case 2://search by username
+                    log.info("search by username not yet implemented");
 //                    log.info("Search By Username; Please enter Username.");
 //                    username = scan.nextLine();
 //                    bankDao.viewAccountsByUsername(username);//displays accounts that match query username
                     break;
-                case 3:
+                case 3: //search by account number
+                    log.info("Search By Account Number not yet implemented");
 //                    log.info("Search By Account Number; Please enter Account Number.");
 //                    accountNumber = Long.parseLong(scan.nextLine());
 //                    bankDao.viewAccountsByAccountNum(accountNumber);//displays accounts that match query username
                     break;
-                case 4:
+                case 4: //approve account by number
+                    log.info("Approve By Account Number not yet implemented"); //fixme next method to implement!
 //                    log.info("Please Enter Account To Approve.");
 //                    accountNumber = Long.parseLong(scan.nextLine());
 //                    //must catch arithmetic exception
 //                    //approveAccountByAccountNumber
                     break;
-                case 5:
+                case 5: //deny account by number
 //                    log.info("Please Enter Account To Deny.");
+                    log.info("Deny By Account Number not yet implemented");
 //                    accountNumber = Long.parseLong(scan.nextLine());
 //                    //must catch arithmetic exception
 //                    // denyAccountByAccountNumber
                     break;
-                case 6:
+                case 6: //view logs by account
 //                    log.info("Please Enter Account To View Logs.");
+                    log.info("View All Logs not yet implemented");
 //                    accountNumber = Long.parseLong(scan.nextLine());
                     //must catch arithmetic exception
                     //viewLogsByAccountNumber
                     break;
-                case 7:
+                case 7: //view logs by user
+                    log.info("View Logs By User not yet implemented");
 //                    log.info("Please Enter User To View Logs.");
 //                    username = scan.nextLine();
                     //viewLogsByUser
                     break;
-                case 8:
+                case 8: //view logs by date
                     log.warn("View By Date Not Implemented");
                     //viewLogsByDate
 //                String date = Long.parseLong(scan.nextLine()); //what type to use for date?String?
                     break;
                 case 9: //viewAllLogs
-                    log.warn("view all longs not yet implemented");
+                    log.info("view All Logs not yet implemented");
                     break;
                 case 10:
                     log.info("Returning to Main Menu");

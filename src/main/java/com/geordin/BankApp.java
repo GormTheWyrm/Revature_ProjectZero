@@ -1,5 +1,5 @@
 package com.geordin;
-//currently, logger is breaking project
+//DEPRECIATED ENTRY POINT!
 
 import com.geordin.DAO.Imp.GormBankImp;
 import com.geordin.model.Customer;
