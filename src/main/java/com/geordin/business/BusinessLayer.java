@@ -117,8 +117,30 @@ public class BusinessLayer {
                 //alternatively, could pass in customer and let dao get pw and username...
             }
             catch (SQLException e){
-//                log.trace(e.getMessage());
+//                log.trace(e.getMessage()); //breaks ui if nto commented out
                 throw new BusinessException("Withdrawal Failed.");
+//                perhaps do an if statement to throw different messages for different errors?
+            }
+            catch (BusinessException e){
+                throw new BusinessException(e.getMessage());
+            }
+        }
+        else {
+            throw new BusinessException("cannot withdraw negative numbers");
+        }
+    }
+    public void depositToAccount(Customer customer, long accountNum, BigDecimal amount) throws BusinessException {
+        //i wonder if public String is better, then I could send businessexception as the response... or boolean
+        //trying to design this to be used by employees
+        if ((amount.compareTo(BigDecimal.ZERO)) > 0){
+            log.trace("Business Layer Attempting to Deposit Amount " + amount + " from Account "+ accountNum);
+            try {
+                bankImp.depositFunds(accountNum, amount, customer.getUsername(), customer.getPassword());
+                //alternatively, could pass in customer and let dao get pw and username...
+            }
+            catch (SQLException e){
+//                log.trace(e.getMessage()); //this breaks UI if not commented
+                throw new BusinessException("Deposit Failed.");
 //                perhaps do an if statement to throw different messages for different errors?
             }
             catch (BusinessException e){
@@ -130,6 +152,8 @@ public class BusinessLayer {
         }
 
     }
+
+    //transfer money may require some sort of sql lock...
 
 
     }

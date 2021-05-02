@@ -184,15 +184,12 @@ log.trace("DAO viewPendingApplications");
     }
 
     public void withdrawFunds(long accountNum, BigDecimal amount, String username, String password) throws SQLException, BusinessException {    System.out.println("temp function");
-    //fixme I need the user id and password in order to validate the current user...
         //should i pass in customer and break it down here, or in business layer?
     //user already logged in, should be ok... but will need to be fixed for webservice
         Connection connection = PostgresConnection.getConnection();
         log.trace("withdraw funds, DAO");
         log.trace("amount:" + amount);
         log.trace("account" + accountNum);
- //fixme withdraw
-
         String sql= "update gormbank.accounts set balance = balance - ? " +
         "where account_number = ? and status ='active' and userid in " +
                 "(SELECT userid from gormbank.customers WHERE username = ? AND password = ?);";
@@ -207,8 +204,25 @@ log.trace("DAO viewPendingApplications");
         }
     }
 
-    public void depositFunds(Customer customer, long accountNum, double amount) throws SQLException, BusinessException {
-        System.out.println("temp function");
+    public void depositFunds(long accountNum, BigDecimal amount, String username, String password) throws SQLException, BusinessException {
+        //should i pass in customer and break it down here, or in business layer?
+        //user already logged in, should be ok... but will need to be fixed for webservice
+        Connection connection = PostgresConnection.getConnection();
+        log.trace("withdraw funds, DAO");
+        log.trace("amount:" + amount);
+        log.trace("account" + accountNum);
+        String sql= "update gormbank.accounts set balance = balance + ? " +
+                "where account_number = ? and status ='active' and userid in " +
+                "(SELECT userid from gormbank.customers WHERE username = ? AND password = ?);";
+        PreparedStatement preparedStatement=connection.prepareStatement(sql);
+        preparedStatement.setBigDecimal(1, amount);
+        preparedStatement.setLong(2, accountNum);
+        preparedStatement.setString(3, username);
+        preparedStatement.setString(4, password);
+        int executeUpdate=preparedStatement.executeUpdate();
+        if (executeUpdate !=1){
+            throw new BusinessException("Operation failed; Account not updated!");
+        }
     }
 
     public void transferFunds(Customer customer, long accountNum, long accountNum2, double amount) throws SQLException, BusinessException {

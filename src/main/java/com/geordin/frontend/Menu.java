@@ -154,7 +154,6 @@ public class Menu { //may change name to app...
                         }
                         break;
                     case 3: //withdrawal
-                        log.info("Withdrawal method not yet implemented");//fixme not connected to business layer yet, not working
                         try {
                             log.info("Choose an account to withdraw from"); //should I make it so that negative numbers are caught here? extra work...
                             long account = Long.parseLong(scan.nextLine());
@@ -164,7 +163,7 @@ public class Menu { //may change name to app...
                                 if ((amount.compareTo(BigDecimal.ZERO)) > 0){
                                     try {
                                         businessLayer.withdrawFromAccount(customer, account, amount);
-                                        log.info("Attempting to Withdrawal Amount " + amount + " from Account " + account);
+                                        log.info("Withdrew " + amount + " from Account " + account);
                                     }
                                     catch (BusinessException e){
                                         log.info(e.getMessage());
@@ -186,13 +185,39 @@ public class Menu { //may change name to app...
                             e.getMessage();
                             menuState = 0;
                         }
-//                        catch (BusinessException e) {
-//                            log.info(e.getMessage());
-//                            menuState = 0;
-//                        }
                         break;
                     case 4: //deposit
                     log.info("Deposit method not yet implemented");
+                        try {
+                            log.info("Choose an Account to Deposit Into"); //should I make it so that negative numbers are caught here? extra work...
+                            long account = Long.parseLong(scan.nextLine());
+                            log.info("Choose an amount to Deposit");
+                            //may need to
+                            BigDecimal amount = new BigDecimal(scan.nextLine()).setScale(2, BigDecimal.ROUND_FLOOR);
+                            if ((amount.compareTo(BigDecimal.ZERO)) > 0){
+                                try {
+                                    businessLayer.depositToAccount(customer, account, amount);
+                                    log.info("Deposited " + amount + " from Account " + account);
+                                }
+                                catch (BusinessException e){
+                                    log.info(e.getMessage());
+                                }
+
+                            }
+                            else {
+                                log.info("Deposit Amounts must be positive numbers");
+                                menuState = 0; //redundant
+                            }
+                        }
+                        catch (NumberFormatException e){
+                            log.info("Invalid Response"); //can be thrown for account or amount - do I want a try block for each?
+                            menuState = 0;
+                        }
+                        catch(ArithmeticException e){
+//                            log.info("Withdrawal Amounts should not contain fractions of cents"); //may need different warning - when might this be called?
+                            e.getMessage();
+                            menuState = 0;
+                        }
                         break;
                     case 5: //transfer
                         break;
