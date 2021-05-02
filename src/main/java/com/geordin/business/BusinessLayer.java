@@ -117,7 +117,7 @@ public class BusinessLayer {
                 //alternatively, could pass in customer and let dao get pw and username...
             }
             catch (SQLException e){
-                log.trace(e.getMessage());
+//                log.trace(e.getMessage());
                 throw new BusinessException("Withdrawal Failed.");
 //                perhaps do an if statement to throw different messages for different errors?
             }
