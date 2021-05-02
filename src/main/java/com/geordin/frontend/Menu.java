@@ -6,7 +6,7 @@ import com.geordin.model.Account;
 import com.geordin.model.Customer;
 import org.apache.log4j.Logger;
 
-import java.sql.SQLException;
+import java.math.BigDecimal;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -48,21 +48,24 @@ public class Menu { //may change name to app...
                         log.info("\n\n\nWelcome returning customer. Please enter your username");
                         log.info("Or type EXIT to return to the main menu");
                         user = scan.nextLine();
-                        log.info("\n\n\nWelcome returning customer. Please enter your password");
-                        log.info("Or type EXIT to return to the main menu");
-                        pw = scan.nextLine();
-                        if (pw.equals("exit") || pw.equals("EXIT") || pw.equals("Exit") || user.equals("exit") || user.equals("EXIT") || user.equals("Exit")){
+                        if (user.equals("exit") || user.equals("EXIT") || user.equals("Exit")){
                             menuState = 0; //goes back to login menu
                             userLoggedIn = false;
-                        }
-                        else{
-                            try{
-                                Customer customer = businessLayer.signInOldCustomer(scan, user, pw);
-                                log.info("Redirecting to Customer Menu: "+ customer.getUsername());
-                                log.trace(businessLayer.signInOldCustomer(scan, user, pw));
-                                this.customerMenu(scan, customer);
-                            }
-                            catch (BusinessException e){
+                        }else {
+                            log.info("\n\n\nWelcome returning customer. Please enter your password");
+                            log.info("Or type EXIT to return to the main menu");
+                            pw = scan.nextLine();
+                            if (pw.equals("exit") || pw.equals("EXIT") || pw.equals("Exit")) {
+                                menuState = 0; //goes back to login menu
+                                userLoggedIn = false;
+                            } else {
+                                try {
+                                    Customer customer = businessLayer.signInOldCustomer(scan, user, pw);
+                                    log.info("Redirecting to Customer Menu: " + customer.getUsername());
+                                    log.trace(businessLayer.signInOldCustomer(scan, user, pw));
+                                    this.customerMenu(scan, customer);
+                                } catch (BusinessException e) {
+                                }
                             }
                         }
                         break;
@@ -151,7 +154,42 @@ public class Menu { //may change name to app...
                         }
                         break;
                     case 3: //withdrawal
-                        log.info("Withdrawal method not yet implemented");
+                        log.info("Withdrawal method not yet implemented");//fixme not connected to business layer yet, not working
+                        try {
+                            log.info("Choose an account to withdraw from"); //should I make it so that negative numbers are caught here? extra work...
+                            long account = Long.parseLong(scan.nextLine());
+                            log.info("Choose an amount to withdraw");
+                            //may need to
+                            BigDecimal amount = new BigDecimal(scan.nextLine()).setScale(2, BigDecimal.ROUND_FLOOR);
+                                if ((amount.compareTo(BigDecimal.ZERO)) > 0){
+                                    try {
+                                        businessLayer.withdrawFromAccount(customer, account, amount);
+                                        log.info("Attempting to Withdrawal Amount " + amount + " from Account " + account);
+                                    }
+                                    catch (BusinessException e){
+                                        log.info(e.getMessage());
+                                    }
+
+                                }
+                                else {
+                                    log.info("Withdrawal Amounts must be positive numbers");
+                                    menuState = 0; //redundant
+                                }
+
+                        }
+                        catch (NumberFormatException e){
+                            log.info("Invalid Response"); //can be thrown for account or amount - do I want a try block for each?
+                            menuState = 0;
+                        }
+                        catch(ArithmeticException e){
+//                            log.info("Withdrawal Amounts should not contain fractions of cents"); //may need different warning - when might this be called?
+                            e.getMessage();
+                            menuState = 0;
+                        }
+//                        catch (BusinessException e) {
+//                            log.info(e.getMessage());
+//                            menuState = 0;
+//                        }
                         break;
                     case 4: //deposit
                     log.info("Deposit method not yet implemented");

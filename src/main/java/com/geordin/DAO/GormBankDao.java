@@ -4,6 +4,7 @@ import com.geordin.BusinessException;
 import com.geordin.model.Account;
 import com.geordin.model.Customer;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
@@ -18,10 +19,10 @@ public interface GormBankDao {
     Vector<Account> viewPendingApplications() throws SQLException, BusinessException;
 
     public void approveAccount(Long accountNum) throws SQLException, BusinessException; //fixme ; next step
-
+    public void withdrawFunds(long accountNum, BigDecimal amount, String username, String password) throws SQLException, BusinessException;
+        //fixme working^
     public void viewAccountsByUsername(String username) throws SQLException, BusinessException;   //used by employee to view customers... without getting pw
     public void viewAccountsByAccountNum(long accountNum) throws SQLException, BusinessException;   //used by ...
-    public void withdrawFunds(Customer customer, long accountNum, double amount) throws SQLException, BusinessException;
     public void depositFunds(Customer customer, long accountNum, double amount) throws SQLException, BusinessException;
     public void transferFunds(Customer customer, long accountNum, long accountNum2, double amount) throws SQLException, BusinessException;
     //viewLogByDate

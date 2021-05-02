@@ -5,7 +5,7 @@ import java.util.*;
 //toString method needs love
 public class Customer extends User{
     //inherits username and password
-//    private Long id;    //may add id back in if I implement ability to change username... but should not be necessary
+    private Long id;    //may add id back in if I implement ability to change username... but should not be necessary
     private String name;
 //    Hashtable<Long, Account> accounts = new Hashtable<>();
     ArrayList<Account> accounts = new ArrayList<>();
@@ -19,7 +19,8 @@ public class Customer extends User{
         this.name = name;
     }
 //    public Long getId(){ return this.id;}
-//    public void setId(Long id) {this.id = id;}
+    public void setId(Long id) {this.id = id;}
+    public Long getId(){return this.id;}
 //    public void addAccount(Long accountNumber, Account account){ //only adds to object, not DB
 //        this.accounts.put(accountNumber, account);
 //    }
@@ -35,7 +36,8 @@ public class Customer extends User{
     //
     //constructors
     public Customer(){};
-    public Customer( String username, String password, String name, Hashtable<Long, Account> accounts){
+    public Customer( Long id, String username, String password, String name, Hashtable<Long, Account> accounts){
+        //fixme added a long id to above
 //        setId(id);
         setUsername(username);
         setPassword(password);

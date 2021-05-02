@@ -4,16 +4,16 @@ com/geordin/model/Transaction.java
  com.geordin.model.Transaction
 com/geordin/BusinessException.java
  com.geordin.BusinessException
+com/geordin/model/User.java
+ com.geordin.model.User
+com/geordin/model/Employee.java
+ com.geordin.model.Employee
+com/geordin/model/Customer.java
+ com.geordin.model.Customer
 com/geordin/model/Account.java
  com.geordin.model.Account
 com/geordin/DAO/GormBankDao.java
  com.geordin.DAO.GormBankDao
-com/geordin/model/User.java
- com.geordin.model.User
-com/geordin/model/Customer.java
- com.geordin.model.Customer
-com/geordin/model/Employee.java
- com.geordin.model.Employee
 com/geordin/frontend/Menu.java
  com.geordin.frontend.Menu
 com/geordin/business/BusinessLayer.java

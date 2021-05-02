@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Account {
     long accountNumber;
-    double balance;
+    double balance; //this needs to be a bigInt...
 //    String userId;
     String status;
     String username;

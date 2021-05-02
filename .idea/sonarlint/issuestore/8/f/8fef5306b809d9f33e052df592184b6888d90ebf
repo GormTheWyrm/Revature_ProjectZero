@@ -1,14 +1,25 @@
 
+a
+java:S1134Y"DTake the required action to fix the issue indicated by this comment.(Õÿ“ú8—®á¶‘/
 ‚
-java:S1149:"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(È›Ùı8¾Õ©‘/
+java:S1149W"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(È›Ùı8øÇÑ¶‘/
+H
+java:S1172o"+Remove this unused method parameter "user".(ÕÊÛ8»ƒø×’/
+‚
+java:S1149?"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(È›Ùı8¾Õ©‘/
 f
-java:S1134 "DTake the required action to fix the issue indicated by this comment.(íéúùşÿÿÿÿ8Úøá¥‘/
+java:S11343"DTake the required action to fix the issue indicated by this comment.(§ğÒüÿÿÿÿ8¥¿÷¯‘/
+f
+java:S1134&"DTake the required action to fix the issue indicated by this comment.(íéúùşÿÿÿÿ8Úøá¥‘/
 ‚
-java:S11499"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(š¾Îİ8éÔ´©‘/
+java:S1149>"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(š¾Îİ8éÔ´©‘/
+t
+java:S1192F"RDefine a constant instead of duplicating this literal "No accounts found" 3 times.(Úï¹˜şÿÿÿÿ8Ùàğ¼‘/
 M
-java:S1172"+Remove this unused method parameter "scan".(êÂ÷üÿÿÿÿ8ßÎö¤‘/
+java:S1172&"+Remove this unused method parameter "scan".(íéúùşÿÿÿÿ8ÖÎ¥‘/
 ]
-java:S11263"AReplace this if-then-else statement by a single return statement.(É•İG8Âº¾¦‘/
+java:S11268"AReplace this if-then-else statement by a single return statement.(É•İG8Âº¾¦‘/
+‚
+java:S1149V"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(›8øÇÑ¶‘/
 M
-java:S1172 "+Remove this unused method parameter "scan".(íéúùşÿÿÿÿ8ÖÎ¥‘/
-X	java:S125*"<This block of commented-out lines of code should be removed.(ò½é8Î¥­‘/
+java:S1172"+Remove this unused method parameter "scan".(êÂ÷üÿÿÿÿ8ßÎö¤‘/

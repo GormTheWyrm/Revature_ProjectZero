@@ -6,6 +6,7 @@ import com.geordin.model.Account;
 import com.geordin.model.Customer;
 import org.apache.log4j.Logger;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.Vector;
@@ -104,9 +105,32 @@ public class BusinessLayer {
         catch (SQLException | BusinessException e){
             throw new BusinessException("No accounts found");
         }
+    }
 
+    public void withdrawFromAccount(Customer customer, long accountNum, BigDecimal amount) throws BusinessException {
+        //i wonder if public String is better, then I could send businessexception as the response... or boolean
+        //trying to design this to be used by employees
+        if ((amount.compareTo(BigDecimal.ZERO)) > 0){
+            log.trace("Business Layer Attempting to Withdrawal Amount " + amount + " from Account "+ accountNum);
+            try {
+                bankImp.withdrawFunds(accountNum, amount, customer.getUsername(), customer.getPassword());
+                //alternatively, could pass in customer and let dao get pw and username...
+            }
+            catch (SQLException e){
+                log.trace(e.getMessage());
+                throw new BusinessException("Withdrawal Failed.");
+//                perhaps do an if statement to throw different messages for different errors?
+            }
+            catch (BusinessException e){
+                throw new BusinessException(e.getMessage());
+            }
+        }
+        else {
+            throw new BusinessException("cannot withdraw negative numbers");
+        }
 
     }
+
 
     }
 
